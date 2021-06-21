@@ -15,6 +15,14 @@ export const PersonalDataSession = styled.section`
   gap: 20px;
 `;
 
+export const AttributesSession = styled.section`
+  margin-top: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+`;
+
 export const CombateSession = styled.section`
   margin-top: 20px;
   padding: 30px;
