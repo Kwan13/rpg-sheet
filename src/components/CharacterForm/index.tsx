@@ -3,6 +3,7 @@ import { FaSave } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useCharacterForm } from '../../hook/CharacterFormContext';
 
 import { Input } from '../Input';
 
@@ -38,10 +39,12 @@ export function CharacterForm(): ReactElement {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  const { addCharacter } = useCharacterForm();
 
   function onSubmit(data: CharacterForm) {
-    console.log(data);
+    addCharacter(data);
   }
+
   return (
     <Container onSubmit={handleSubmit(onSubmit)}>
       <h3>Personagem</h3>

@@ -1,14 +1,19 @@
 import { ReactElement } from 'react';
 
+import { CharacterFormProvider } from './hook/CharacterFormContext';
+import { CharacterProvider } from './hook/AttributeBarContext';
+
 import Home from './pages/Home';
 import GlobalStyle from './styles/global';
 
 function App(): ReactElement {
   return (
-    <>
-      <Home />
-      <GlobalStyle />
-    </>
+    <CharacterProvider>
+      <CharacterFormProvider>
+        <Home />
+        <GlobalStyle />
+      </CharacterFormProvider>
+    </CharacterProvider>
   );
 }
 

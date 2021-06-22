@@ -9,6 +9,8 @@ import { Container, Bar } from './styles';
 interface AttributeBarProps {
   name: string;
   color: string;
+  value: number;
+  setValue(value: number): void;
 }
 
 type FormData = {
@@ -16,9 +18,14 @@ type FormData = {
   max_value: number;
 };
 
-export function AttributeBar({ name, color }: AttributeBarProps): ReactElement {
+export function AttributeBar({
+  name,
+  color,
+  value,
+  setValue,
+}: AttributeBarProps): ReactElement {
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState(12);
+  // const [value, setValue] = useState(12);
   const [maxValue, setMaxValue] = useState(12);
 
   const percentage = useMemo(() => {
@@ -35,8 +42,6 @@ export function AttributeBar({ name, color }: AttributeBarProps): ReactElement {
     setValue(data.current_value);
     setMaxValue(data.max_value);
     setIsOpen(false);
-
-    localStorage.setItem(`${name}`, JSON.parse(String(data.current_value)));
   }
 
   function toggleModal() {

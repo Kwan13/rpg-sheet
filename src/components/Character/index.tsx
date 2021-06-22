@@ -2,9 +2,11 @@ import { ReactElement } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { AttributeBar } from '../AttributeBar';
+import { useCharacterForm } from '../../hook/CharacterFormContext';
+import { useAttributesBar } from '../../hook/AttributeBarContext';
 
 import { Container, InputGroup, FormGroup } from './styles';
-import avenger from '../../assets/avenger.jpg';
+import avatar from '../../assets/avatar.jpeg';
 import { Input } from '../Input';
 
 type FormData = {
@@ -15,6 +17,9 @@ type FormData = {
 
 export function Character(): ReactElement {
   const { handleSubmit, register } = useForm();
+  const { character } = useCharacterForm();
+  const { addLife, addOccultism, addSanity, life, occultism, sanity } =
+    useAttributesBar();
 
   function onSubmit(data: FormData) {
     console.log(data);
@@ -22,11 +27,16 @@ export function Character(): ReactElement {
   return (
     <Container>
       <header>
-        <img src={avenger} alt="avatar" />
-        <h3>Avenger</h3>
+        <img src={character?.avatar || avatar} alt="avatar" />
+        <h3>{character?.name}</h3>
       </header>
       <main>
-        <AttributeBar name="Vida" color="#38A169" />
+        <AttributeBar
+          name="Vida"
+          color="#38A169"
+          value={life}
+          setValue={addLife}
+        />
         <InputGroup>
           <div className="checkboxContainer">
             <input type="checkbox" name="serious_damage" id="serious_damage" />
@@ -41,7 +51,12 @@ export function Character(): ReactElement {
             <label htmlFor="dying">Morrendo</label>
           </div>
         </InputGroup>
-        <AttributeBar name="Sanidade" color="#D53F8C" />
+        <AttributeBar
+          name="Sanidade"
+          color="#D53F8C"
+          value={sanity}
+          setValue={addSanity}
+        />
         <InputGroup>
           <div className="checkboxContainer">
             <input type="checkbox" name="traumatized" id="traumatized" />
@@ -52,7 +67,12 @@ export function Character(): ReactElement {
             <label htmlFor="maddened">Enlouquecido</label>
           </div>
         </InputGroup>
-        <AttributeBar name="Ocultismo" color="#9F7AEA" />
+        <AttributeBar
+          name="Ocultismo"
+          color="#9F7AEA"
+          value={occultism}
+          setValue={addOccultism}
+        />
         <FormGroup onSubmit={handleSubmit(onSubmit)}>
           <div>
             <label htmlFor="extra_damage">Dano extra</label>
