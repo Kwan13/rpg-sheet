@@ -1,29 +1,27 @@
 import { ReactElement } from 'react';
-import { useForm } from 'react-hook-form';
 
 import { AttributeBar } from '../AttributeBar';
-import { useCharacterForm } from '../../hook/CharacterFormContext';
-import { useAttributesBar } from '../../hook/AttributeBarContext';
+import { useCharacterForm } from '../../hooks/CharacterFormContext';
+import { useAttributesBar } from '../../hooks/AttributeBarContext';
+import { useCharacter } from '../../hooks/CharacterContext';
 
 import { Container, InputGroup, FormGroup } from './styles';
 import avatar from '../../assets/avatar.jpeg';
 import { Input } from '../Input';
 
-type FormData = {
-  extra_damage: string;
-  body: string;
-  paranormal: string;
-};
-
 export function Character(): ReactElement {
-  const { handleSubmit, register } = useForm();
   const { character } = useCharacterForm();
   const { addLife, addOccultism, addSanity, life, occultism, sanity } =
     useAttributesBar();
+  const {
+    addBody,
+    addParanormal,
+    addExtraDamage,
+    body,
+    extraDamage,
+    paranormal,
+  } = useCharacter();
 
-  function onSubmit(data: FormData) {
-    console.log(data);
-  }
   return (
     <Container>
       <header>
@@ -73,27 +71,35 @@ export function Character(): ReactElement {
           value={occultism}
           setValue={addOccultism}
         />
-        <FormGroup onSubmit={handleSubmit(onSubmit)}>
+        <FormGroup>
           <div>
             <label htmlFor="extra_damage">Dano extra</label>
             <Input
-              {...register('extra_damage')}
-              type="text"
+              type="number"
               name="extra_damage"
               id="extra_damage"
+              onChange={e => addExtraDamage(Number(e.target.value))}
+              defaultValue={extraDamage}
             />
           </div>
           <div>
             <label htmlFor="body">Corpo</label>
-            <Input {...register('body')} type="text" name="body" id="body" />
+            <Input
+              type="number"
+              name="body"
+              id="body"
+              onChange={e => addBody(Number(e.target.value))}
+              defaultValue={body}
+            />
           </div>
           <div>
             <label htmlFor="paranormal">Expo. paranormal</label>
             <Input
-              {...register('paranormal')}
-              type="text"
+              type="number"
               name="paranormal"
               id="paranormal"
+              onChange={e => addParanormal(Number(e.target.value))}
+              defaultValue={paranormal}
             />
           </div>
         </FormGroup>

@@ -3,7 +3,7 @@ import { FaSave } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useCharacterForm } from '../../hook/CharacterFormContext';
+import { useCharacterForm } from '../../hooks/CharacterFormContext';
 
 import { Input } from '../Input';
 

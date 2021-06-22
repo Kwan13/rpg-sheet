@@ -1,7 +1,8 @@
 import { ReactElement } from 'react';
 
-import { CharacterFormProvider } from './hook/CharacterFormContext';
-import { CharacterProvider } from './hook/AttributeBarContext';
+import { CharacterFormProvider } from './hooks/CharacterFormContext';
+import { AttributesBarProvider } from './hooks/AttributeBarContext';
+import { CharacterProvider } from './hooks/CharacterContext';
 
 import Home from './pages/Home';
 import GlobalStyle from './styles/global';
@@ -9,10 +10,12 @@ import GlobalStyle from './styles/global';
 function App(): ReactElement {
   return (
     <CharacterProvider>
-      <CharacterFormProvider>
-        <Home />
-        <GlobalStyle />
-      </CharacterFormProvider>
+      <AttributesBarProvider>
+        <CharacterFormProvider>
+          <Home />
+          <GlobalStyle />
+        </CharacterFormProvider>
+      </AttributesBarProvider>
     </CharacterProvider>
   );
 }

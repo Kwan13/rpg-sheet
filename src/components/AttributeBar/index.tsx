@@ -25,7 +25,6 @@ export function AttributeBar({
   setValue,
 }: AttributeBarProps): ReactElement {
   const [isOpen, setIsOpen] = useState(false);
-  // const [value, setValue] = useState(12);
   const [maxValue, setMaxValue] = useState(12);
 
   const percentage = useMemo(() => {
@@ -41,7 +40,7 @@ export function AttributeBar({
   function onSubmit(data: FormData) {
     setValue(data.current_value);
     setMaxValue(data.max_value);
-    setIsOpen(false);
+    toggleModal();
   }
 
   function toggleModal() {

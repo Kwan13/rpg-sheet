@@ -6,7 +6,7 @@ import {
   ReactElement,
 } from 'react';
 
-interface CharacterProviderProps {
+interface AttributesBarProviderProps {
   children: ReactNode;
 }
 
@@ -19,11 +19,11 @@ type AttributeBarContextData = {
   occultism: number;
 };
 
-const CharacterContext = createContext({} as AttributeBarContextData);
+const AttributeBarContext = createContext({} as AttributeBarContextData);
 
-export function CharacterProvider({
+export function AttributesBarProvider({
   children,
-}: CharacterProviderProps): ReactElement {
+}: AttributesBarProviderProps): ReactElement {
   const [life, setLife] = useState(12);
   const [sanity, setSanity] = useState(12);
   const [occultism, setOccultism] = useState(12);
@@ -41,16 +41,16 @@ export function CharacterProvider({
   }
 
   return (
-    <CharacterContext.Provider
+    <AttributeBarContext.Provider
       value={{ addLife, addOccultism, addSanity, life, occultism, sanity }}
     >
       {children}
-    </CharacterContext.Provider>
+    </AttributeBarContext.Provider>
   );
 }
 
 export function useAttributesBar(): AttributeBarContextData {
-  const context = useContext(CharacterContext);
+  const context = useContext(AttributeBarContext);
 
   return context;
 }
