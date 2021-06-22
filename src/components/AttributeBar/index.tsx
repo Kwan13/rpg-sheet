@@ -40,12 +40,11 @@ export function AttributeBar({
   function onSubmit(data: FormData) {
     setValue(data.current_value);
     setMaxValue(data.max_value);
-    toggleModal();
+    handleToggleModal();
   }
 
-  function toggleModal() {
-    const toggle = !isOpen;
-    setIsOpen(toggle);
+  function handleToggleModal() {
+    setIsOpen(!isOpen);
   }
 
   return (
@@ -53,14 +52,14 @@ export function AttributeBar({
       <h5>{name}</h5>
       <div>
         {percentage === 0 ? (
-          <Bar color={color} percentage="3%" onClick={toggleModal}>
+          <Bar color={color} percentage="3%" onClick={handleToggleModal}>
             0
           </Bar>
         ) : (
           <Bar
             color={color}
             percentage={`${percentage}%`}
-            onClick={toggleModal}
+            onClick={handleToggleModal}
           >
             {`${value}/${maxValue}`}
           </Bar>
@@ -68,7 +67,7 @@ export function AttributeBar({
       </div>
 
       {isOpen && (
-        <Modal modalTitle={`alterar ${name}`} closeModal={toggleModal}>
+        <Modal modalTitle={`alterar ${name}`} closeModal={handleToggleModal}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <label htmlFor="current_value">atual</label>
             <Input

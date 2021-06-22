@@ -19,11 +19,9 @@ export const Content = styled.div`
   max-width: 400px;
   padding: 2rem;
   border-radius: 5px;
-  /* text-align: center; */
   position: relative;
 
   header {
-    /* margin-bottom: 20px; */
     display: flex;
 
     button {
@@ -34,20 +32,10 @@ export const Content = styled.div`
     }
   }
 
-  /* .closeButton {
-    position: relative;
-    top: -20px;
-    left: 180px;
-    background-color: transparent;
-    border: 0;
-    color: var(--white);
-  } */
-
   h3 {
     text-transform: uppercase;
     margin-bottom: 20px;
     color: var(--purple-400);
-    /* text-align: center; */
   }
 
   form {

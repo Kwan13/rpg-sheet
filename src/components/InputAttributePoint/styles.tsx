@@ -10,7 +10,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  button {
+  > button {
     width: 35px;
     height: 35px;
     background-color: transparent;
@@ -35,5 +35,23 @@ export const Container = styled.div`
     outline: none;
     color: var(--gray-200);
     border-bottom: 1px solid var(--gray-600);
+  }
+`;
+
+export const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 70px;
+    height: 70px;
+    margin-top: 10px;
+  }
+
+  p {
+    margin: 10px 0;
+    font-size: 25px;
   }
 `;
