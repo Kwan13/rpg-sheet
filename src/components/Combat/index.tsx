@@ -1,4 +1,4 @@
-import { ReactElement, useState } from 'react';
+import { ReactElement, useState, useMemo } from 'react';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { BsPlusSquare } from 'react-icons/bs';
 import {
@@ -11,8 +11,11 @@ import {
   FiRss,
 } from 'react-icons/fi';
 import { useForm } from 'react-hook-form';
+import { v4 as uuid } from 'uuid';
 
 import { Modal } from '../Modal';
+
+import { useCombat } from '../../hooks/CombatContext';
 
 import { Container } from './styles';
 import { Input } from '../Input';
@@ -29,24 +32,54 @@ type FormData = {
 
 export function Combat(): ReactElement {
   const [isOpen, setIsOpen] = useState(false);
-  const { handleSubmit, register } = useForm();
+  const { handleSubmit, register } = useForm({
+    defaultValues: {
+      name: 0,
+      type: 0,
+      damage: 0,
+      attack: 0,
+      range: 0,
+      defect: 0,
+      area: 0,
+    },
+  });
+  const { weapons, handleSetWeapon, handleDeleteWeapon } = useCombat();
+
+  const isMaxWeapons = useMemo(() => {
+    if (weapons.length >= 15) {
+      return true;
+    }
+
+    return false;
+  }, [weapons]);
 
   function toggleOpenCloseModal() {
-    const toggle = !isOpen;
-    setIsOpen(toggle);
+    setIsOpen(!isOpen);
   }
 
   function onSubmit(data: FormData) {
-    console.log(data);
+    if (isMaxWeapons) return;
+    const value = {
+      id: uuid(),
+      ...data,
+    };
+
+    handleSetWeapon(value);
   }
 
   return (
-    <Container>
+    <Container isMaxWeapons={isMaxWeapons}>
       <div>
         <h3>COMBATE</h3>
-        <button type="button" onClick={toggleOpenCloseModal}>
-          <BsPlusSquare color="#797D9A" size={20} />
-        </button>
+        {isMaxWeapons ? (
+          <button type="button">
+            <BsPlusSquare color="#797D9A" size={20} />
+          </button>
+        ) : (
+          <button type="button" onClick={toggleOpenCloseModal}>
+            <BsPlusSquare color="#797D9A" size={20} />
+          </button>
+        )}
       </div>
 
       <table>
@@ -63,20 +96,25 @@ export function Combat(): ReactElement {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <button type="button">
-                <FaRegTrashAlt color="#9F7AEA" />
-              </button>
-            </td>
-            <td>Balestra</td>
-            <td>Arco</td>
-            <td>1d20</td>
-            <td>5</td>
-            <td>10 m</td>
-            <td>1</td>
-            <td>0</td>
-          </tr>
+          {weapons.map(weapon => (
+            <tr key={weapon.id}>
+              <td>
+                <button
+                  type="button"
+                  onClick={() => handleDeleteWeapon(weapon.id)}
+                >
+                  <FaRegTrashAlt color="#9F7AEA" />
+                </button>
+              </td>
+              <td>{weapon.name}</td>
+              <td>{weapon.type}</td>
+              <td>{weapon.damage}</td>
+              <td>{weapon.attack}</td>
+              <td>{weapon.range}</td>
+              <td>{weapon.defect}</td>
+              <td>{weapon.area}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
 

@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+interface ContainerProps {
+  isMaxWeapons: boolean;
+}
+
+export const Container = styled.div<ContainerProps>`
   > div {
     width: 100%;
     margin-bottom: 30px;
@@ -18,6 +22,11 @@ export const Container = styled.div`
       border: 0;
       margin-left: auto;
       transition: filter 0.2s;
+      ${props =>
+        props.isMaxWeapons &&
+        css`
+          cursor: not-allowed;
+        `}
 
       &:hover {
         filter: brightness(0.7);
