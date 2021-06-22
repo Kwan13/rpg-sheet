@@ -8,12 +8,12 @@ import diceImg from '../../assets/dice.svg';
 interface InputAttributePointProps
   extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  statusNumberBase: number;
+  abilityValue: number;
 }
 
 export function InputAttributePoint({
   name,
-  statusNumberBase,
+  abilityValue,
   ...rest
 }: InputAttributePointProps): ReactElement {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,12 +22,13 @@ export function InputAttributePoint({
 
   function handleCalcDice() {
     const dice = Math.floor(Math.random() * (20 - 1 + 1)) + 1;
-    const ability = statusNumberBase;
+    const ability = abilityValue;
     setDiceValue(dice);
 
     if (ability <= 0 || ability > 20) {
       setStatus('inválido');
       setDiceValue(0);
+
       return;
     }
 
@@ -111,7 +112,7 @@ export function InputAttributePoint({
         <img src={diceImg} alt="dice" />
       </button>
       <h4>{name}</h4>
-      <input name={name} {...rest} max={20} />
+      <input name={name} {...rest} max={20} defaultValue={abilityValue} />
       {isOpen && (
         <Modal closeModal={handleToggleModal} modalTitle="status">
           <ModalContent>

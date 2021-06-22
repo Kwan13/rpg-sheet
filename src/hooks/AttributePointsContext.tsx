@@ -19,18 +19,18 @@ type AttributePointsContextData = {
   extra1: number;
   extra2: number;
   extra3: number;
-  handleSetAppearance(value: number): void;
-  handleSetConstitution(value: number): void;
-  handleSetDexterity(value: number): void;
-  handleSetEducation(value: number): void;
-  handleSetStrength(value: number): void;
-  handleSetIntelligence(value: number): void;
-  handleSetPower(value: number): void;
-  handleSetLuck(value: number): void;
-  handleSetMovement(value: number): void;
-  handleSetExtra1(value: number): void;
-  handleSetExtra2(value: number): void;
-  handleSetExtra3(value: number): void;
+  setAppearance(value: number): void;
+  setConstitution(value: number): void;
+  setDexterity(value: number): void;
+  setEducation(value: number): void;
+  setStrength(value: number): void;
+  setIntelligence(value: number): void;
+  setPower(value: number): void;
+  setLuck(value: number): void;
+  setMovement(value: number): void;
+  setExtra1(value: number): void;
+  setExtra2(value: number): void;
+  setExtra3(value: number): void;
 };
 
 const AttributePointsContext = createContext({} as AttributePointsContextData);
@@ -55,43 +55,6 @@ export function AttributePointsProvider({
   const [extra2, setExtra2] = useState(0);
   const [extra3, setExtra3] = useState(0);
 
-  function handleSetAppearance(value: number) {
-    setAppearance(value);
-  }
-  function handleSetConstitution(value: number) {
-    setConstitution(value);
-  }
-  function handleSetDexterity(value: number) {
-    setDexterity(value);
-  }
-  function handleSetEducation(value: number) {
-    setEducation(value);
-  }
-  function handleSetStrength(value: number) {
-    setStrength(value);
-  }
-  function handleSetIntelligence(value: number) {
-    setIntelligence(value);
-  }
-  function handleSetPower(value: number) {
-    setPower(value);
-  }
-  function handleSetLuck(value: number) {
-    setLuck(value);
-  }
-  function handleSetMovement(value: number) {
-    setMovement(value);
-  }
-  function handleSetExtra1(value: number) {
-    setExtra1(value);
-  }
-  function handleSetExtra2(value: number) {
-    setExtra2(value);
-  }
-  function handleSetExtra3(value: number) {
-    setExtra3(value);
-  }
-
   return (
     <AttributePointsContext.Provider
       value={{
@@ -107,18 +70,18 @@ export function AttributePointsProvider({
         extra1,
         extra2,
         extra3,
-        handleSetAppearance,
-        handleSetConstitution,
-        handleSetDexterity,
-        handleSetEducation,
-        handleSetIntelligence,
-        handleSetLuck,
-        handleSetMovement,
-        handleSetPower,
-        handleSetStrength,
-        handleSetExtra1,
-        handleSetExtra2,
-        handleSetExtra3,
+        setAppearance,
+        setConstitution,
+        setDexterity,
+        setEducation,
+        setExtra1,
+        setExtra2,
+        setExtra3,
+        setIntelligence,
+        setLuck,
+        setMovement,
+        setPower,
+        setStrength,
       }}
     >
       {children}

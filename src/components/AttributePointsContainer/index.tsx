@@ -8,18 +8,6 @@ import { Container, Content } from './styles';
 
 export function AttributePointsContainer(): ReactElement {
   const {
-    handleSetAppearance,
-    handleSetConstitution,
-    handleSetStrength,
-    handleSetMovement,
-    handleSetPower,
-    handleSetLuck,
-    handleSetIntelligence,
-    handleSetEducation,
-    handleSetDexterity,
-    handleSetExtra1,
-    handleSetExtra2,
-    handleSetExtra3,
     appearance,
     constitution,
     dexterity,
@@ -32,6 +20,18 @@ export function AttributePointsContainer(): ReactElement {
     extra1,
     extra2,
     extra3,
+    setAppearance,
+    setConstitution,
+    setDexterity,
+    setEducation,
+    setExtra1,
+    setExtra2,
+    setExtra3,
+    setIntelligence,
+    setLuck,
+    setMovement,
+    setPower,
+    setStrength,
   } = useAttributesPoints();
   return (
     <Container>
@@ -40,74 +40,75 @@ export function AttributePointsContainer(): ReactElement {
         <InputAttributePoint
           type="number"
           name="appearance"
-          onChange={e => handleSetAppearance(Number(e.target.value))}
-          statusNumberBase={appearance}
+          onChange={e => setAppearance(Number(e.target.value))}
+          abilityValue={appearance}
         />
         <InputAttributePoint
           type="number"
           name="constitution"
-          onChange={e => handleSetConstitution(Number(e.target.value))}
-          statusNumberBase={constitution}
+          onChange={e => setConstitution(Number(e.target.value))}
+          abilityValue={constitution}
         />
         <InputAttributePoint
           type="number"
           name="dexterity"
-          onChange={e => handleSetDexterity(Number(e.target.value))}
-          statusNumberBase={dexterity}
+          onChange={e => setDexterity(Number(e.target.value))}
+          abilityValue={dexterity}
         />
         <InputAttributePoint
           type="number"
           name="education"
-          onChange={e => handleSetEducation(Number(e.target.value))}
-          statusNumberBase={education}
+          onChange={e => setEducation(Number(e.target.value))}
+          abilityValue={education}
         />
         <InputAttributePoint
           type="number"
           name="strength"
-          onChange={e => handleSetStrength(Number(e.target.value))}
-          statusNumberBase={strength}
+          onChange={e => setStrength(Number(e.target.value))}
+          abilityValue={strength}
         />
         <InputAttributePoint
           type="number"
           name="intelligence"
-          onChange={e => handleSetIntelligence(Number(e.target.value))}
-          statusNumberBase={intelligence}
+          onChange={e => setIntelligence(Number(e.target.value))}
+          abilityValue={intelligence}
         />
         <InputAttributePoint
           type="number"
           name="power"
-          onChange={e => handleSetPower(Number(e.target.value))}
-          statusNumberBase={power}
+          onChange={e => setPower(Number(e.target.value))}
+          abilityValue={power}
         />
         <InputAttributePoint
           type="number"
           name="luck"
-          onChange={e => handleSetLuck(Number(e.target.value))}
-          statusNumberBase={luck}
+          onChange={e => setLuck(Number(e.target.value))}
+          abilityValue={luck}
         />
         <InputAttributePoint
           type="number"
           name="movement"
-          onChange={e => handleSetMovement(Number(e.target.value))}
-          statusNumberBase={movement}
+          onChange={e => setMovement(Number(e.target.value))}
+          abilityValue={movement}
         />
         <InputAttributePoint
           type="number"
           name="?"
-          onChange={e => handleSetExtra1(Number(e.target.value))}
-          statusNumberBase={extra1}
+          onChange={e => setExtra1(Number(e.target.value))}
+          abilityValue={extra1}
+          defaultValue={2}
         />
         <InputAttributePoint
           type="number"
           name="?"
-          onChange={e => handleSetExtra2(Number(e.target.value))}
-          statusNumberBase={extra2}
+          onChange={e => setExtra2(Number(e.target.value))}
+          abilityValue={extra2}
         />
         <InputAttributePoint
           type="number"
           name="?"
-          onChange={e => handleSetExtra3(Number(e.target.value))}
-          statusNumberBase={extra3}
+          onChange={e => setExtra3(Number(e.target.value))}
+          abilityValue={extra3}
         />
       </Content>
     </Container>

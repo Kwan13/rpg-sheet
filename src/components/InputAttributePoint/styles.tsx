@@ -28,6 +28,7 @@ export const Container = styled.div`
   }
 
   input {
+    padding-left: 15px;
     width: 100%;
     text-align: center;
     background-color: transparent;

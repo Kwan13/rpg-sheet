@@ -11,12 +11,12 @@ import { Input } from '../Input';
 
 export function Character(): ReactElement {
   const { character } = useCharacterForm();
-  const { addLife, addOccultism, addSanity, life, occultism, sanity } =
+  const { setLife, setOccultism, setSanity, life, occultism, sanity } =
     useAttributesBar();
   const {
-    addBody,
-    addParanormal,
-    addExtraDamage,
+    setBody,
+    setExtraDamage,
+    setParanormal,
     body,
     extraDamage,
     paranormal,
@@ -33,7 +33,7 @@ export function Character(): ReactElement {
           name="Vida"
           color="#38A169"
           value={life}
-          setValue={addLife}
+          setValue={setLife}
         />
         <InputGroup>
           <div className="checkboxContainer">
@@ -53,7 +53,7 @@ export function Character(): ReactElement {
           name="Sanidade"
           color="#D53F8C"
           value={sanity}
-          setValue={addSanity}
+          setValue={setSanity}
         />
         <InputGroup>
           <div className="checkboxContainer">
@@ -69,7 +69,7 @@ export function Character(): ReactElement {
           name="Ocultismo"
           color="#9F7AEA"
           value={occultism}
-          setValue={addOccultism}
+          setValue={setOccultism}
         />
         <FormGroup>
           <div>
@@ -78,7 +78,7 @@ export function Character(): ReactElement {
               type="number"
               name="extra_damage"
               id="extra_damage"
-              onChange={e => addExtraDamage(Number(e.target.value))}
+              onChange={e => setExtraDamage(Number(e.target.value))}
               defaultValue={extraDamage}
             />
           </div>
@@ -88,7 +88,7 @@ export function Character(): ReactElement {
               type="number"
               name="body"
               id="body"
-              onChange={e => addBody(Number(e.target.value))}
+              onChange={e => setBody(Number(e.target.value))}
               defaultValue={body}
             />
           </div>
@@ -98,7 +98,7 @@ export function Character(): ReactElement {
               type="number"
               name="paranormal"
               id="paranormal"
-              onChange={e => addParanormal(Number(e.target.value))}
+              onChange={e => setParanormal(Number(e.target.value))}
               defaultValue={paranormal}
             />
           </div>

@@ -11,9 +11,9 @@ interface AttributesBarProviderProps {
 }
 
 type AttributeBarContextData = {
-  addLife(value: number): void;
-  addSanity(value: number): void;
-  addOccultism(value: number): void;
+  setLife(value: number): void;
+  setSanity(value: number): void;
+  setOccultism(value: number): void;
   life: number;
   sanity: number;
   occultism: number;
@@ -28,21 +28,9 @@ export function AttributesBarProvider({
   const [sanity, setSanity] = useState(12);
   const [occultism, setOccultism] = useState(12);
 
-  function addLife(value: number) {
-    setLife(value);
-  }
-
-  function addSanity(value: number) {
-    setSanity(value);
-  }
-
-  function addOccultism(value: number) {
-    setOccultism(value);
-  }
-
   return (
     <AttributeBarContext.Provider
-      value={{ addLife, addOccultism, addSanity, life, occultism, sanity }}
+      value={{ setLife, setOccultism, setSanity, life, occultism, sanity }}
     >
       {children}
     </AttributeBarContext.Provider>
