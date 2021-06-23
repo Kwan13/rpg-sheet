@@ -35,8 +35,8 @@ export function Combat(): ReactElement {
   const [isOpen, setIsOpen] = useState(false);
   const { handleSubmit, register } = useForm({
     defaultValues: {
-      name: 0,
-      type: 0,
+      name: '',
+      type: '',
       damage: 0,
       attack: 0,
       range: 0,
@@ -59,7 +59,6 @@ export function Combat(): ReactElement {
   }
 
   function onSubmit(data: FormData) {
-    if (isMaxWeapons) return;
     const value = {
       id: uuid(),
       ...data,
@@ -72,15 +71,13 @@ export function Combat(): ReactElement {
     <Container isMaxWeapons={isMaxWeapons}>
       <div>
         <h3>COMBATE</h3>
-        {isMaxWeapons ? (
-          <button type="button">
-            <BsPlusSquare color="#797D9A" size={20} />
-          </button>
-        ) : (
-          <button type="button" onClick={toggleOpenCloseModal}>
-            <BsPlusSquare color="#797D9A" size={20} />
-          </button>
-        )}
+        <button
+          type="button"
+          onClick={toggleOpenCloseModal}
+          disabled={isMaxWeapons}
+        >
+          <BsPlusSquare color="#797D9A" size={20} />
+        </button>
       </div>
 
       <table>
@@ -195,7 +192,11 @@ export function Combat(): ReactElement {
               placeholder="Área"
               icon={FiRss}
             />
-            <button type="submit" className="submitButton">
+            <button
+              type="submit"
+              className="submitButton"
+              disabled={isMaxWeapons}
+            >
               adicionar
             </button>
           </form>
