@@ -14,11 +14,12 @@ import { useForm } from 'react-hook-form';
 import { v4 as uuid } from 'uuid';
 
 import { Modal } from '../Modal';
+import { Input } from '../Input';
 
 import { useCombat } from '../../hooks/CombatContext';
 
 import { Container } from './styles';
-import { Input } from '../Input';
+import swordsImg from '../../assets/swords.png';
 
 type FormData = {
   name: string;
@@ -117,6 +118,17 @@ export function Combat(): ReactElement {
           ))}
         </tbody>
       </table>
+      {weapons.length <= 0 ? (
+        <div className="emptyWeapons">
+          <img src={swordsImg} alt="" />
+          <p>
+            parece que você está sem armas viajante... pegue uma arma e continue
+            sua jornada 🛡⚔️.
+          </p>
+        </div>
+      ) : (
+        ''
+      )}
 
       {isOpen && (
         <Modal modalTitle="Novo item" closeModal={toggleOpenCloseModal}>

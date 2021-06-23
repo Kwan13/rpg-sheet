@@ -34,6 +34,24 @@ export const Container = styled.div<ContainerProps>`
     }
   }
 
+  .emptyWeapons {
+    margin-top: 30px;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      filter: opacity(0.3);
+    }
+
+    p {
+      color: var(--gray-600);
+    }
+  }
+
   table {
     width: 1000px;
     margin: 0 auto;
