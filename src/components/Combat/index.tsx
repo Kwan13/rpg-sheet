@@ -16,7 +16,7 @@ import { v4 as uuid } from 'uuid';
 import { Modal } from '../Modal';
 import { Input } from '../Input';
 
-import { useCombat } from '../../hooks/CombatContext';
+import { useCombat } from '../../hooks/useCombat';
 
 import { Container } from './styles';
 import swordsImg from '../../assets/swords.png';
@@ -115,7 +115,7 @@ export function Combat(): ReactElement {
           ))}
         </tbody>
       </table>
-      {weapons.length <= 0 ? (
+      {weapons.length <= 0 && (
         <div className="emptyWeapons">
           <img src={swordsImg} alt="" />
           <p>
@@ -123,8 +123,6 @@ export function Combat(): ReactElement {
             sua jornada 🛡⚔️.
           </p>
         </div>
-      ) : (
-        ''
       )}
 
       {isOpen && (

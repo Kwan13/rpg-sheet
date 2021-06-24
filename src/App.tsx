@@ -1,28 +1,28 @@
 import { ReactElement } from 'react';
 
-import { CharacterFormProvider } from './hooks/CharacterFormContext';
-import { AttributesBarProvider } from './hooks/AttributeBarContext';
-import { CharacterProvider } from './hooks/CharacterContext';
-import { AttributePointsProvider } from './hooks/AttributePointsContext';
-import { CombatProvider } from './hooks/CombatContext';
+import { AttributePointsProvider } from './contexts/AttributePointsContext';
+import { CharacterProvider } from './contexts/CharacterContext';
+import { StatusBarProvider } from './contexts/StatusBarContext';
+import { CombatProvider } from './contexts/CombatContext';
+import { DiceProvider } from './contexts/DiceContext';
 
 import Home from './pages/Home';
 import GlobalStyle from './styles/global';
 
 function App(): ReactElement {
   return (
-    <CombatProvider>
+    <CharacterProvider>
       <AttributePointsProvider>
-        <CharacterProvider>
-          <AttributesBarProvider>
-            <CharacterFormProvider>
+        <StatusBarProvider>
+          <DiceProvider>
+            <CombatProvider>
               <Home />
               <GlobalStyle />
-            </CharacterFormProvider>
-          </AttributesBarProvider>
-        </CharacterProvider>
+            </CombatProvider>
+          </DiceProvider>
+        </StatusBarProvider>
       </AttributePointsProvider>
-    </CombatProvider>
+    </CharacterProvider>
   );
 }
 

@@ -1,7 +1,7 @@
 import { InputHTMLAttributes, ReactElement, useState } from 'react';
 
 import { Modal } from '../Modal';
-import { useAttributesPoints } from '../../hooks/AttributePointsContext';
+import { useDice } from '../../hooks/useDice';
 
 import { Container, ModalContent } from './styles';
 import diceImg from '../../assets/dice.svg';
@@ -18,7 +18,7 @@ export function InputAttributePoint({
   ...rest
 }: InputAttributePointProps): ReactElement {
   const [isOpen, setIsOpen] = useState(false);
-  const { handleCalcDice, status, dice } = useAttributesPoints();
+  const { handleDiceStatus, dice, status } = useDice();
 
   function handleToggleModal() {
     setIsOpen(!isOpen);
@@ -30,7 +30,7 @@ export function InputAttributePoint({
         type="button"
         onClick={() => {
           handleToggleModal();
-          handleCalcDice(abilityValue);
+          handleDiceStatus(abilityValue);
         }}
       >
         <img src={diceImg} alt="dice" />
@@ -42,10 +42,7 @@ export function InputAttributePoint({
           <ModalContent>
             <img src={diceImg} alt="dice" />
             <p>{dice}</p>
-
             <h2>{status}</h2>
-
-            <strong />
           </ModalContent>
         </Modal>
       )}

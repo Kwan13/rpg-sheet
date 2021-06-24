@@ -24,7 +24,7 @@ export const AttributesSession = styled.section`
 `;
 
 export const CombateSession = styled.section`
-  min-height: 300px;
+  min-height: 450px;
   margin-top: 20px;
   padding: 30px;
   background-color: var(--gray-800);

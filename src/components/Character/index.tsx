@@ -1,25 +1,24 @@
 import { ReactElement } from 'react';
 
-import { AttributeBar } from '../AttributeBar';
-import { useCharacterForm } from '../../hooks/CharacterFormContext';
-import { useAttributesBar } from '../../hooks/AttributeBarContext';
-import { useCharacter } from '../../hooks/CharacterContext';
+import { StatusBar } from '../StatusBar';
+import { useStatusBar } from '../../hooks/useStatusBar';
+import { useCharacter } from '../../hooks/useCharacter';
 
 import { Container, InputGroup, FormGroup } from './styles';
 import avatar from '../../assets/avatar.jpeg';
 import { Input } from '../Input';
 
 export function Character(): ReactElement {
-  const { character } = useCharacterForm();
   const { setLife, setOccultism, setSanity, life, occultism, sanity } =
-    useAttributesBar();
+    useStatusBar();
   const {
-    setBody,
-    setExtraDamage,
-    setParanormal,
+    character,
     body,
     extraDamage,
     paranormal,
+    setBody,
+    setExtraDamage,
+    setParanormal,
   } = useCharacter();
 
   return (
@@ -29,7 +28,7 @@ export function Character(): ReactElement {
         <h3>{character?.name}</h3>
       </header>
       <main>
-        <AttributeBar
+        <StatusBar
           name="Vida"
           color="#38A169"
           value={life}
@@ -49,7 +48,7 @@ export function Character(): ReactElement {
             <label htmlFor="dying">Morrendo</label>
           </div>
         </InputGroup>
-        <AttributeBar
+        <StatusBar
           name="Sanidade"
           color="#D53F8C"
           value={sanity}
@@ -65,7 +64,7 @@ export function Character(): ReactElement {
             <label htmlFor="maddened">Enlouquecido</label>
           </div>
         </InputGroup>
-        <AttributeBar
+        <StatusBar
           name="Ocultismo"
           color="#9F7AEA"
           value={occultism}

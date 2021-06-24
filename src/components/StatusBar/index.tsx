@@ -6,7 +6,7 @@ import { Modal } from '../Modal';
 
 import { Container, Bar } from './styles';
 
-interface AttributeBarProps {
+interface StatusBarProps {
   name: string;
   color: string;
   value: number;
@@ -18,14 +18,15 @@ type FormData = {
   max_value: number;
 };
 
-export function AttributeBar({
+export function StatusBar({
   name,
   color,
   value,
   setValue,
-}: AttributeBarProps): ReactElement {
+}: StatusBarProps): ReactElement {
   const [isOpen, setIsOpen] = useState(false);
   const [maxValue, setMaxValue] = useState(12);
+  const { handleSubmit, register } = useForm();
 
   const percentage = useMemo(() => {
     const maxStatus = maxValue;
@@ -34,8 +35,6 @@ export function AttributeBar({
 
     return result;
   }, [maxValue, value]);
-
-  const { handleSubmit, register } = useForm();
 
   function onSubmit(data: FormData) {
     setValue(data.current_value);

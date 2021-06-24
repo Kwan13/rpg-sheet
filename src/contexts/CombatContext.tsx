@@ -1,10 +1,4 @@
-import {
-  useContext,
-  useState,
-  ReactNode,
-  createContext,
-  ReactElement,
-} from 'react';
+import { useState, ReactNode, createContext, ReactElement } from 'react';
 
 type Weapon = {
   id: string;
@@ -27,7 +21,7 @@ interface CombatProvider {
   children: ReactNode;
 }
 
-const CombatContext = createContext({} as CombatContextData);
+export const CombatContext = createContext({} as CombatContextData);
 
 export function CombatProvider({ children }: CombatProvider): ReactElement {
   const [weapons, setWeapons] = useState<Weapon[]>([]);
@@ -47,10 +41,4 @@ export function CombatProvider({ children }: CombatProvider): ReactElement {
       {children}
     </CombatContext.Provider>
   );
-}
-
-export function useCombat(): CombatContextData {
-  const context = useContext(CombatContext);
-
-  return context;
 }

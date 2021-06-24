@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 
 import { InputAttributePoint } from '../InputAttributePoint';
 
-import { useAttributesPoints } from '../../hooks/AttributePointsContext';
+import { useAttribute } from '../../hooks/useAttribute';
 
 import { Container, Content } from './styles';
 
@@ -32,7 +32,7 @@ export function AttributePointsContainer(): ReactElement {
     setMovement,
     setPower,
     setStrength,
-  } = useAttributesPoints();
+  } = useAttribute();
   return (
     <Container>
       <h3>Atributos</h3>
