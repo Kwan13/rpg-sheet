@@ -6,10 +6,31 @@ export const Container = styled.div`
   background-color: var(--gray-800);
   border-radius: 8px;
 
-  h3 {
-    color: var(--purple-400);
-    text-transform: uppercase;
-    margin: 0 auto;
+  header {
+    display: flex;
+    justify-content: space-between;
+
+    h3 {
+      color: var(--purple-400);
+      text-transform: uppercase;
+    }
+
+    button {
+      background: transparent;
+      color: var(--gray-50);
+      border: 0;
+      border-radius: 8px;
+      padding: 5px;
+      transition: filter 0.2s;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        filter: brightness(0.7);
+      }
+    }
   }
 `;
 
