@@ -6,7 +6,7 @@ import { StatusBarProvider } from './contexts/StatusBarContext';
 import { CombatProvider } from './contexts/CombatContext';
 import { DiceProvider } from './contexts/DiceContext';
 
-import Home from './pages/Home';
+import { Routes } from './routes';
 import GlobalStyle from './styles/global';
 
 function App(): ReactElement {
@@ -16,7 +16,7 @@ function App(): ReactElement {
         <StatusBarProvider>
           <DiceProvider>
             <CombatProvider>
-              <Home />
+              <Routes />
               <GlobalStyle />
             </CombatProvider>
           </DiceProvider>
