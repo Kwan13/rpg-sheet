@@ -23,26 +23,29 @@ export const Content = styled.div`
   position: relative;
 
   header {
+    margin-bottom: 20px;
+
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     button {
-      margin-left: auto;
+      width: 20px;
+      height: 20px;
       background-color: transparent;
       border: 0;
       color: var(--white);
     }
-  }
 
-  h3 {
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    color: var(--purple-400);
+    h3 {
+      text-transform: uppercase;
+      color: var(--purple-400);
+    }
   }
 
   form {
     label {
       margin: 8px 0;
-
       display: block;
     }
 

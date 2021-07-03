@@ -1,14 +1,21 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  max-width: 100px;
+  max-width: 150px;
   width: 100%;
   margin: 0 auto;
+  padding: 10px;
+  background: var(--gray-700);
+  border-radius: 8px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  h4 {
+    margin-bottom: 8px;
+  }
 
   > button {
     width: 35px;
@@ -32,10 +39,10 @@ export const Container = styled.div`
     width: 100%;
     text-align: center;
     background-color: transparent;
-    border: 0;
     outline: none;
     color: var(--gray-200);
-    border-bottom: 1px solid var(--gray-600);
+    border: 1px solid var(--gray-600);
+    border-radius: 8px;
   }
 `;
 

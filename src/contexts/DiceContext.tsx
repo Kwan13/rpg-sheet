@@ -59,6 +59,8 @@ export function DiceProvider({ children }: DiceProviderProps): ReactElement {
 
     const type = table[ability - 1];
 
+    console.log(type);
+
     if (type.extreme) {
       if (dice >= type.extreme) {
         setStatus('Extremo');

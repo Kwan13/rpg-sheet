@@ -18,12 +18,12 @@ export function Modal({
     <Container>
       <Content>
         <header>
+          <h3>{modalTitle}</h3>
           <button type="button" className="closeButton" onClick={closeModal}>
             <FaWindowClose />
           </button>
         </header>
 
-        <h3>{modalTitle}</h3>
         {children}
       </Content>
     </Container>

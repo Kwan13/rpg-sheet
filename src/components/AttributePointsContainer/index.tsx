@@ -39,55 +39,55 @@ export function AttributePointsContainer(): ReactElement {
       <Content>
         <InputAttributePoint
           type="number"
-          name="appearance"
+          name="Aparência"
           onChange={e => setAppearance(Number(e.target.value))}
           abilityValue={appearance}
         />
         <InputAttributePoint
           type="number"
-          name="constitution"
+          name="Constituição"
           onChange={e => setConstitution(Number(e.target.value))}
           abilityValue={constitution}
         />
         <InputAttributePoint
           type="number"
-          name="dexterity"
+          name="Destreza"
           onChange={e => setDexterity(Number(e.target.value))}
           abilityValue={dexterity}
         />
         <InputAttributePoint
           type="number"
-          name="education"
+          name="Educação"
           onChange={e => setEducation(Number(e.target.value))}
           abilityValue={education}
         />
         <InputAttributePoint
           type="number"
-          name="strength"
+          name="Força"
           onChange={e => setStrength(Number(e.target.value))}
           abilityValue={strength}
         />
         <InputAttributePoint
           type="number"
-          name="intelligence"
+          name="Inteligência"
           onChange={e => setIntelligence(Number(e.target.value))}
           abilityValue={intelligence}
         />
         <InputAttributePoint
           type="number"
-          name="power"
+          name="Poder"
           onChange={e => setPower(Number(e.target.value))}
           abilityValue={power}
         />
         <InputAttributePoint
           type="number"
-          name="luck"
+          name="Sorte"
           onChange={e => setLuck(Number(e.target.value))}
           abilityValue={luck}
         />
         <InputAttributePoint
           type="number"
-          name="movement"
+          name="Movimento"
           onChange={e => setMovement(Number(e.target.value))}
           abilityValue={movement}
         />
@@ -96,7 +96,6 @@ export function AttributePointsContainer(): ReactElement {
           name="?"
           onChange={e => setExtra1(Number(e.target.value))}
           abilityValue={extra1}
-          defaultValue={2}
         />
         <InputAttributePoint
           type="number"
