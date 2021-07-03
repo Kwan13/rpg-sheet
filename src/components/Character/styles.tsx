@@ -5,6 +5,7 @@ export const Container = styled.div`
   background-color: var(--gray-800);
   border-radius: 8px;
   width: 100%;
+  /* box-shadow: 0 5px 10px rgb(0 0 0 / 12%); */
 
   > header {
     margin-bottom: 40px;

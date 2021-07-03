@@ -5,13 +5,9 @@ import { CharacterForm } from '../../components/CharacterForm';
 import { Combat } from '../../components/Combat';
 import { Character } from '../../components/Character';
 import { AttributePointsContainer } from '../../components/AttributePointsContainer';
+import { Skills } from '../../components/Skills';
 
-import {
-  Container,
-  PersonalDataSession,
-  CombateSession,
-  AttributesSession,
-} from './styles';
+import { Container, PersonalDataSession, AttributesSession } from './styles';
 
 export default function Home(): ReactElement {
   return (
@@ -24,9 +20,8 @@ export default function Home(): ReactElement {
       <AttributesSession>
         <AttributePointsContainer />
       </AttributesSession>
-      <CombateSession>
-        <Combat />
-      </CombateSession>
+      <Combat />
+      <Skills />
     </Container>
   );
 }

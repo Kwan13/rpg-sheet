@@ -5,6 +5,12 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
+  background-color: var(--gray-800);
+  min-height: 450px;
+  margin-top: 20px;
+  border-radius: 8px;
+  padding: 30px;
+
   > div {
     width: 100%;
     margin-bottom: 30px;
