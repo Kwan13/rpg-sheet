@@ -17,7 +17,7 @@ type CharacterForm = {
   occupation: string;
   age: number;
   sex: 'masc' | 'fem';
-  birth_place: string;
+  birthplace: string;
   residence: string;
 };
 
@@ -40,11 +40,10 @@ export function CharacterForm(): ReactElement {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const { setCharacter } = useCharacter();
+  const { handleSetCharacter, character } = useCharacter();
 
   function onSubmit(data: CharacterForm) {
-    setCharacter(data);
-    localStorage.setItem('rpgSheet:Character', JSON.stringify(data));
+    handleSetCharacter(data);
   }
 
   return (
@@ -56,6 +55,7 @@ export function CharacterForm(): ReactElement {
         id="avatar"
         name="avatar"
         error={errors.avatar?.message}
+        defaultValue={character.avatar}
       />
       <label htmlFor="name">Nome:</label>
       <Input
@@ -63,6 +63,7 @@ export function CharacterForm(): ReactElement {
         id="name"
         name="name"
         error={errors.name?.message}
+        defaultValue={character.name}
       />
       <label htmlFor="player">Jogador:</label>
       <Input
@@ -70,6 +71,7 @@ export function CharacterForm(): ReactElement {
         id="player"
         name="player"
         error={errors.player?.message}
+        defaultValue={character.player}
       />
       <label htmlFor="occupation">Ocupação:</label>
       <Input
@@ -77,6 +79,7 @@ export function CharacterForm(): ReactElement {
         id="occupation"
         name="occupation"
         error={errors.occupation?.message}
+        defaultValue={character.occupation}
       />
 
       <label htmlFor="age">Idade:</label>
@@ -85,10 +88,16 @@ export function CharacterForm(): ReactElement {
         id="age"
         name="age"
         error={errors.age?.message}
+        defaultValue={character.age}
       />
       <div className="selectionBox">
         <label htmlFor="sex">Sexo:</label>
-        <select {...register('sex')} name="sex" id="sex">
+        <select
+          {...register('sex')}
+          name="sex"
+          id="sex"
+          defaultValue={character.name}
+        >
           <option value="masc">Masculino</option>
           <option value="fem">Feminino</option>
         </select>
@@ -100,6 +109,7 @@ export function CharacterForm(): ReactElement {
         id="birthplace"
         name="birthplace"
         error={errors.birthplace?.message}
+        defaultValue={character.birthplace}
       />
 
       <label htmlFor="residence">Local de residência</label>
@@ -108,6 +118,7 @@ export function CharacterForm(): ReactElement {
         id="residence"
         name="residence"
         error={errors.residence?.message}
+        defaultValue={character.residence}
       />
 
       <button type="submit">
