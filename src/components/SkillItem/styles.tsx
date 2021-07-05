@@ -1,13 +1,16 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface ContentProps {
+  hide: boolean;
+}
 
 export const Container = styled.div`
-  /* border: 1px solid red; */
   margin: 0 auto;
   width: 300px;
 
   button {
     width: 100%;
-    height: 30px;
+    height: 40px;
     border-radius: 8px;
     text-transform: uppercase;
     background: transparent;
@@ -25,11 +28,14 @@ export const Container = styled.div`
   }
 `;
 
-export const Content = styled.div`
+export const Content = styled.div<ContentProps>`
+  ${props => css`
+    display: ${props.hide ? 'block' : 'none'};
+  `}
   margin-top: 10px;
   background: var(--gray-700);
   border-radius: 8px;
-  padding: 10px;
+  padding: 20px;
 
   div {
     display: flex;

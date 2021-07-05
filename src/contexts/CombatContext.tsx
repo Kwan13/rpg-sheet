@@ -24,15 +24,28 @@ interface CombatProvider {
 export const CombatContext = createContext({} as CombatContextData);
 
 export function CombatProvider({ children }: CombatProvider): ReactElement {
-  const [weapons, setWeapons] = useState<Weapon[]>([]);
+  const [weapons, setWeapons] = useState<Weapon[]>(() => {
+    const weaponsData = localStorage.getItem('rpgSheet:Combat');
+
+    if (!weaponsData) {
+      return [];
+    }
+
+    return JSON.parse(weaponsData);
+  });
 
   function handleSetWeapon(value: Weapon) {
     setWeapons(oldState => [...oldState, value]);
+    localStorage.setItem(
+      'rpgSheet:Combat',
+      JSON.stringify([...weapons, value]),
+    );
   }
 
   function handleDeleteWeapon(id: string) {
     const filteredWeapon = weapons.filter(weapon => weapon.id !== id);
     setWeapons(filteredWeapon);
+    localStorage.setItem('rpgSheet:Combat', JSON.stringify(filteredWeapon));
   }
   return (
     <CombatContext.Provider

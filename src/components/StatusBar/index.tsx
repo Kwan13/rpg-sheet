@@ -10,22 +10,25 @@ interface StatusBarProps {
   name: string;
   color: string;
   value: number;
+  maxValue: number;
   setValue(value: number): void;
+  setMaxValue(value: number): void;
 }
 
 type FormData = {
-  current_value: number;
-  max_value: number;
+  currentValue: number;
+  maxValue: number;
 };
 
 export function StatusBar({
   name,
   color,
   value,
+  maxValue,
+  setMaxValue,
   setValue,
 }: StatusBarProps): ReactElement {
   const [isOpen, setIsOpen] = useState(false);
-  const [maxValue, setMaxValue] = useState(12);
   const { handleSubmit, register } = useForm();
 
   const percentage = useMemo(() => {
@@ -37,8 +40,12 @@ export function StatusBar({
   }, [maxValue, value]);
 
   function onSubmit(data: FormData) {
-    setValue(data.current_value);
-    setMaxValue(data.max_value);
+    if (Number(data.maxValue) < Number(data.currentValue)) {
+      return;
+    }
+
+    setValue(data.currentValue);
+    setMaxValue(data.maxValue);
     handleToggleModal();
   }
 
@@ -70,19 +77,17 @@ export function StatusBar({
           <form onSubmit={handleSubmit(onSubmit)}>
             <label htmlFor="current_value">atual</label>
             <Input
-              {...register('current_value')}
+              {...register('currentValue')}
               type="number"
-              id="current_value"
-              name="current_value"
+              id="currentValue"
               defaultValue={value}
               max={maxValue}
             />
             <label htmlFor="max_value">máximo</label>
             <Input
-              {...register('max_value')}
+              {...register('maxValue')}
               type="number"
-              id="max_value"
-              name="max_value"
+              id="maxValue"
               defaultValue={maxValue}
             />
 

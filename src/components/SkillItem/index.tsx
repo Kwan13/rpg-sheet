@@ -19,7 +19,7 @@ export function SkillItem({ name, children }: SkillItemProps): ReactElement {
       <button type="button" onClick={handleToggle}>
         {name}
       </button>
-      {isOpen && <Content>{children}</Content>}
+      <Content hide={isOpen}>{children}</Content>
     </Container>
   );
 }

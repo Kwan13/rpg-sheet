@@ -9,16 +9,28 @@ import avatar from '../../assets/avatar.jpeg';
 import { Input } from '../Input';
 
 export function Character(): ReactElement {
-  const { setLife, setOccultism, setSanity, life, occultism, sanity } =
-    useStatusBar();
+  const {
+    handleSetSanity,
+    handleSetMaxsanity,
+    handleSetOccultism,
+    handleSetMaxOccultism,
+    handleSetLife,
+    handleSetMaxLife,
+    life,
+    maxLife,
+    occultism,
+    maxOccultism,
+    sanity,
+    maxSanity,
+  } = useStatusBar();
   const {
     character,
     body,
     extraDamage,
     paranormal,
-    setBody,
-    setExtraDamage,
-    setParanormal,
+    handleSetBody,
+    handleSetExtraDamage,
+    handleSetParanormal,
   } = useCharacter();
 
   return (
@@ -32,7 +44,9 @@ export function Character(): ReactElement {
           name="Vida"
           color="#38A169"
           value={life}
-          setValue={setLife}
+          maxValue={maxLife}
+          setValue={handleSetLife}
+          setMaxValue={handleSetMaxLife}
         />
         <InputGroup>
           <div className="checkboxContainer">
@@ -52,7 +66,9 @@ export function Character(): ReactElement {
           name="Sanidade"
           color="#D53F8C"
           value={sanity}
-          setValue={setSanity}
+          maxValue={maxSanity}
+          setValue={handleSetSanity}
+          setMaxValue={handleSetMaxsanity}
         />
         <InputGroup>
           <div className="checkboxContainer">
@@ -68,7 +84,9 @@ export function Character(): ReactElement {
           name="Ocultismo"
           color="#9F7AEA"
           value={occultism}
-          setValue={setOccultism}
+          maxValue={maxOccultism}
+          setValue={handleSetOccultism}
+          setMaxValue={handleSetMaxOccultism}
         />
         <FormGroup>
           <div>
@@ -77,7 +95,7 @@ export function Character(): ReactElement {
               type="number"
               name="extra_damage"
               id="extra_damage"
-              onChange={e => setExtraDamage(Number(e.target.value))}
+              onChange={e => handleSetExtraDamage(Number(e.target.value))}
               defaultValue={extraDamage}
             />
           </div>
@@ -87,7 +105,7 @@ export function Character(): ReactElement {
               type="number"
               name="body"
               id="body"
-              onChange={e => setBody(Number(e.target.value))}
+              onChange={e => handleSetBody(Number(e.target.value))}
               defaultValue={body}
             />
           </div>
@@ -97,7 +115,7 @@ export function Character(): ReactElement {
               type="number"
               name="paranormal"
               id="paranormal"
-              onChange={e => setParanormal(Number(e.target.value))}
+              onChange={e => handleSetParanormal(Number(e.target.value))}
               defaultValue={paranormal}
             />
           </div>

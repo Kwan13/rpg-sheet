@@ -44,6 +44,7 @@ export function CharacterForm(): ReactElement {
 
   function onSubmit(data: CharacterForm) {
     setCharacter(data);
+    localStorage.setItem('rpgSheet:Character', JSON.stringify(data));
   }
 
   return (

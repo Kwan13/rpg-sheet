@@ -71,10 +71,82 @@ type FormData = {
 
 export function Skills(): ReactElement {
   const { handleSubmit, register } = useForm();
-  const { setSkills, skills } = useSkills();
+  const { skills, handleSetSkills } = useSkills();
 
   function onSubmit(data: FormData) {
-    setSkills(data);
+    const skillsData = {
+      strength: {
+        pitch: data.pitch,
+        martialArts: data.martialArts,
+        ride: data.ride,
+        climb: data.climb,
+        swim: data.swim,
+        jump: data.jump,
+      },
+      constitution: {
+        listen: data.listen,
+        heavyMachine: data.heavyMachine,
+        resist: data.resist,
+        defend: data.defend,
+        energy: data.energy,
+        regeneration: data.regeneration,
+      },
+      wisdom: {
+        art: data.art,
+        locksmith: data.locksmith,
+        photography: data.photography,
+        story: data.story,
+        naturalHistory: data.naturalHistory,
+        nativeLanguage: data.nativeLanguage,
+        locate: data.locate,
+        occultism: data.occultism,
+        craft: data.craft,
+      },
+      dexterity: {
+        dodge: data.dodge,
+        stealth: data.stealth,
+        hide: data.hide,
+        drive: data.drive,
+        pilot: data.pilot,
+        counterattack: data.counterattack,
+        prestidigitation: data.prestidigitation,
+      },
+      intelligence: {
+        anthropology: data.anthropology,
+        archeology: data.archeology,
+        astronomy: data.astronomy,
+        biology: data.biology,
+        computing: data.computing,
+        accounting: data.accounting,
+        credit: data.credit,
+        right: data.right,
+        electronics: data.electronics,
+        drugstore: data.drugstore,
+        physical: data.physical,
+        geology: data.geology,
+        medicine: data.medicine,
+        navigate: data.navigate,
+        anotherLanguage: data.anotherLanguage,
+        firstAid: data.firstAid,
+        psychoanalysis: data.psychoanalysis,
+        psychology: data.psychology,
+        chemical: data.chemical,
+        trackBack: data.trackBack,
+        electricalRepair: data.electricalRepair,
+        mechanicalRepair: data.mechanicalRepair,
+      },
+      charisma: {
+        bargain: data.bargain,
+        disguise: data.disguise,
+        lipService: data.lipService,
+        cover: data.cover,
+        persuade: data.persuade,
+        charm: data.charm,
+        trick: data.trick,
+      },
+    };
+
+    handleSetSkills(skillsData);
   }
 
   return (
@@ -94,7 +166,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('pitch')}
-                defaultValue={skills.pitch}
+                defaultValue={skills.strength.pitch}
               />
             </div>
             <div>
@@ -102,7 +174,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('martialArts')}
-                defaultValue={skills.martialArts}
+                defaultValue={skills.strength.martialArts}
               />
             </div>
             <div>
@@ -110,7 +182,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('ride')}
-                defaultValue={skills.ride}
+                defaultValue={skills.strength.ride}
               />
             </div>
             <div>
@@ -118,7 +190,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('climb')}
-                defaultValue={skills.climb}
+                defaultValue={skills.strength.climb}
               />
             </div>
             <div>
@@ -126,7 +198,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('swim')}
-                defaultValue={skills.swim}
+                defaultValue={skills.strength.swim}
               />
             </div>
             <div>
@@ -134,7 +206,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('jump')}
-                defaultValue={skills.jump}
+                defaultValue={skills.strength.jump}
               />
             </div>
           </SkillItem>
@@ -144,7 +216,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('listen')}
-                defaultValue={skills.listen}
+                defaultValue={skills.constitution.listen}
               />
             </div>
             <div>
@@ -152,7 +224,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('heavyMachine')}
-                defaultValue={skills.heavyMachine}
+                defaultValue={skills.constitution.heavyMachine}
               />
             </div>
             <div>
@@ -160,7 +232,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('resist')}
-                defaultValue={skills.resist}
+                defaultValue={skills.constitution.resist}
               />
             </div>
             <div>
@@ -168,7 +240,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('defend')}
-                defaultValue={skills.defend}
+                defaultValue={skills.constitution.defend}
               />
             </div>
             <div>
@@ -176,7 +248,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('energy')}
-                defaultValue={skills.energy}
+                defaultValue={skills.constitution.energy}
               />
             </div>
             <div>
@@ -184,7 +256,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('regeneration')}
-                defaultValue={skills.regeneration}
+                defaultValue={skills.constitution.regeneration}
               />
             </div>
           </SkillItem>
@@ -194,7 +266,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('art')}
-                defaultValue={skills.art}
+                defaultValue={skills.wisdom.art}
               />
             </div>
             <div>
@@ -202,7 +274,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('locksmith')}
-                defaultValue={skills.locksmith}
+                defaultValue={skills.wisdom.locksmith}
               />
             </div>
             <div>
@@ -210,7 +282,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('photography')}
-                defaultValue={skills.photography}
+                defaultValue={skills.wisdom.photography}
               />
             </div>
             <div>
@@ -218,7 +290,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('story')}
-                defaultValue={skills.story}
+                defaultValue={skills.wisdom.story}
               />
             </div>
             <div>
@@ -226,7 +298,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('naturalHistory')}
-                defaultValue={skills.naturalHistory}
+                defaultValue={skills.wisdom.naturalHistory}
               />
             </div>
             <div>
@@ -234,7 +306,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('nativeLanguage')}
-                defaultValue={skills.nativeLanguage}
+                defaultValue={skills.wisdom.nativeLanguage}
               />
             </div>
             <div>
@@ -242,7 +314,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('locate')}
-                defaultValue={skills.locate}
+                defaultValue={skills.wisdom.locate}
               />
             </div>
             <div>
@@ -250,7 +322,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('occultism')}
-                defaultValue={skills.occultism}
+                defaultValue={skills.wisdom.occultism}
               />
             </div>
             <div>
@@ -258,7 +330,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('craft')}
-                defaultValue={skills.craft}
+                defaultValue={skills.wisdom.craft}
               />
             </div>
           </SkillItem>
@@ -268,7 +340,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('dodge')}
-                defaultValue={skills.dodge}
+                defaultValue={skills.dexterity.dodge}
               />
             </div>
             <div>
@@ -276,7 +348,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('stealth')}
-                defaultValue={skills.stealth}
+                defaultValue={skills.dexterity.stealth}
               />
             </div>
             <div>
@@ -284,7 +356,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('hide')}
-                defaultValue={skills.hide}
+                defaultValue={skills.dexterity.hide}
               />
             </div>
             <div>
@@ -292,7 +364,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('drive')}
-                defaultValue={skills.drive}
+                defaultValue={skills.dexterity.drive}
               />
             </div>
             <div>
@@ -300,7 +372,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('pilot')}
-                defaultValue={skills.pilot}
+                defaultValue={skills.dexterity.pilot}
               />
             </div>
             <div>
@@ -308,7 +380,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('counterattack')}
-                defaultValue={skills.counterattack}
+                defaultValue={skills.dexterity.counterattack}
               />
             </div>
             <div>
@@ -316,7 +388,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('prestidigitation')}
-                defaultValue={skills.prestidigitation}
+                defaultValue={skills.dexterity.prestidigitation}
               />
             </div>
           </SkillItem>
@@ -326,7 +398,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('anthropology')}
-                defaultValue={skills.anthropology}
+                defaultValue={skills.intelligence.anthropology}
               />
             </div>
             <div>
@@ -334,7 +406,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('archeology')}
-                defaultValue={skills.archeology}
+                defaultValue={skills.intelligence.archeology}
               />
             </div>
             <div>
@@ -342,7 +414,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('astronomy')}
-                defaultValue={skills.astronomy}
+                defaultValue={skills.intelligence.astronomy}
               />
             </div>
             <div>
@@ -350,7 +422,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('biology')}
-                defaultValue={skills.biology}
+                defaultValue={skills.intelligence.biology}
               />
             </div>
             <div>
@@ -358,7 +430,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('computing')}
-                defaultValue={skills.computing}
+                defaultValue={skills.intelligence.computing}
               />
             </div>
             <div>
@@ -366,7 +438,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('accounting')}
-                defaultValue={skills.accounting}
+                defaultValue={skills.intelligence.accounting}
               />
             </div>
             <div>
@@ -374,7 +446,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('credit')}
-                defaultValue={skills.credit}
+                defaultValue={skills.intelligence.credit}
               />
             </div>
             <div>
@@ -382,7 +454,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('right')}
-                defaultValue={skills.right}
+                defaultValue={skills.intelligence.right}
               />
             </div>
             <div>
@@ -390,7 +462,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('electronics')}
-                defaultValue={skills.electronics}
+                defaultValue={skills.intelligence.electronics}
               />
             </div>
             <div>
@@ -398,7 +470,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('drugstore')}
-                defaultValue={skills.drugstore}
+                defaultValue={skills.intelligence.drugstore}
               />
             </div>
             <div>
@@ -406,7 +478,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('physical')}
-                defaultValue={skills.physical}
+                defaultValue={skills.intelligence.physical}
               />
             </div>
             <div>
@@ -414,7 +486,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('geology')}
-                defaultValue={skills.geology}
+                defaultValue={skills.intelligence.geology}
               />
             </div>
             <div>
@@ -422,7 +494,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('medicine')}
-                defaultValue={skills.medicine}
+                defaultValue={skills.intelligence.medicine}
               />
             </div>
             <div>
@@ -430,7 +502,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('navigate')}
-                defaultValue={skills.navigate}
+                defaultValue={skills.intelligence.navigate}
               />
             </div>
             <div>
@@ -438,7 +510,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('anotherLanguage')}
-                defaultValue={skills.anotherLanguage}
+                defaultValue={skills.intelligence.anotherLanguage}
               />
             </div>
             <div>
@@ -446,7 +518,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('firstAid')}
-                defaultValue={skills.firstAid}
+                defaultValue={skills.intelligence.firstAid}
               />
             </div>
             <div>
@@ -454,7 +526,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('psychoanalysis')}
-                defaultValue={skills.psychoanalysis}
+                defaultValue={skills.intelligence.psychoanalysis}
               />
             </div>
             <div>
@@ -462,7 +534,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('psychology')}
-                defaultValue={skills.psychology}
+                defaultValue={skills.intelligence.psychology}
               />
             </div>
             <div>
@@ -470,7 +542,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('chemical')}
-                defaultValue={skills.chemical}
+                defaultValue={skills.intelligence.chemical}
               />
             </div>
             <div>
@@ -478,7 +550,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('trackBack')}
-                defaultValue={skills.trackBack}
+                defaultValue={skills.intelligence.trackBack}
               />
             </div>
             <div>
@@ -486,7 +558,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('electricalRepair')}
-                defaultValue={skills.electricalRepair}
+                defaultValue={skills.intelligence.electricalRepair}
               />
             </div>
             <div>
@@ -494,7 +566,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('mechanicalRepair')}
-                defaultValue={skills.mechanicalRepair}
+                defaultValue={skills.intelligence.mechanicalRepair}
               />
             </div>
           </SkillItem>
@@ -504,7 +576,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('bargain')}
-                defaultValue={skills.bargain}
+                defaultValue={skills.charisma.bargain}
               />
             </div>
             <div>
@@ -512,7 +584,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('disguise')}
-                defaultValue={skills.disguise}
+                defaultValue={skills.charisma.disguise}
               />
             </div>
             <div>
@@ -520,7 +592,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('lipService')}
-                defaultValue={skills.lipService}
+                defaultValue={skills.charisma.lipService}
               />
             </div>
             <div>
@@ -528,7 +600,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('cover')}
-                defaultValue={skills.cover}
+                defaultValue={skills.charisma.cover}
               />
             </div>
             <div>
@@ -536,7 +608,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('persuade')}
-                defaultValue={skills.persuade}
+                defaultValue={skills.charisma.persuade}
               />
             </div>
             <div>
@@ -544,7 +616,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('charm')}
-                defaultValue={skills.charm}
+                defaultValue={skills.charisma.charm}
               />
             </div>
             <div>
@@ -552,7 +624,7 @@ export function Skills(): ReactElement {
               <Input
                 type="number"
                 {...register('trick')}
-                defaultValue={skills.trick}
+                defaultValue={skills.charisma.trick}
               />
             </div>
           </SkillItem>
