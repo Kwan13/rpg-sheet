@@ -1,14 +1,25 @@
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
+import { FaFileDownload, FaFileImport } from 'react-icons/fa';
+import { AiOutlineUserDelete } from 'react-icons/ai';
+import { useForm } from 'react-hook-form';
 
 import { StatusBar } from '../StatusBar';
 import { useStatusBar } from '../../hooks/useStatusBar';
 import { useCharacter } from '../../hooks/useCharacter';
+import { useSaveProfile } from '../../hooks/useSaveProfile';
+import { Modal } from '../Modal';
+import { TextArea } from '../TextArea';
 
-import { Container, InputGroup, FormGroup } from './styles';
+import { Container, InputGroup, FormGroup, ProfileActionGroup } from './styles';
 import avatar from '../../assets/avatar.jpeg';
 import { Input } from '../Input';
 
+type formData = {
+  profile: string;
+};
+
 export function Character(): ReactElement {
+  const [isOpen, setIsOpen] = useState(false);
   const {
     handleSetSanity,
     handleSetMaxsanity,
@@ -32,6 +43,18 @@ export function Character(): ReactElement {
     handleSetExtraDamage,
     handleSetParanormal,
   } = useCharacter();
+  const { handleExportProfile, handleImportProfile, handleDeleteProfile } =
+    useSaveProfile();
+
+  const { handleSubmit, register } = useForm();
+
+  function onSubmit(data: formData) {
+    handleImportProfile(data);
+  }
+
+  function handleToggleOpenModal() {
+    setIsOpen(!isOpen);
+  }
 
   return (
     <Container>
@@ -120,7 +143,42 @@ export function Character(): ReactElement {
             />
           </div>
         </FormGroup>
+        <ProfileActionGroup>
+          <h3>Ações de perfil:</h3>
+          <div>
+            <button type="button" onClick={handleExportProfile}>
+              <FaFileDownload />
+              exportar
+            </button>
+            <button type="button" onClick={handleToggleOpenModal}>
+              <FaFileImport />
+              importar
+            </button>
+            <button
+              className="deleteButton"
+              type="button"
+              onClick={handleDeleteProfile}
+            >
+              <AiOutlineUserDelete />
+              excluir
+            </button>
+          </div>
+        </ProfileActionGroup>
       </main>
+      {isOpen && (
+        <Modal modalTitle="Importar perfil" closeModal={handleToggleOpenModal}>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <TextArea
+              {...register('profile')}
+              name="profile"
+              placeholder="cole os dados aqui"
+            />
+            <button type="submit" className="submitButton">
+              importar
+            </button>
+          </form>
+        </Modal>
+      )}
     </Container>
   );
 }

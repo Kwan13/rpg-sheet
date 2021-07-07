@@ -2,13 +2,15 @@ import { ReactNode, createContext, useState, ReactElement } from 'react';
 
 type Character = {
   avatar: string;
+  fullBody: string;
   name: string;
   player: string;
   occupation: string;
   age: number;
-  sex: 'masc' | 'fem';
+  sex: 'masculino' | 'feminino';
   birthplace: string;
   residence: string;
+  description: string;
 };
 
 type CharacterContextData = {
@@ -34,30 +36,42 @@ export function CharacterProvider({
   const [character, setCharacter] = useState<Character>(() => {
     const characterData = localStorage.getItem('rpgSheet:Character');
 
-    if (!characterData) return '';
+    if (!characterData) {
+      localStorage.setItem('rpgSheet:Character', String(''));
+      return '';
+    }
 
     return JSON.parse(characterData);
   });
   const [extraDamage, setExtraDamage] = useState(() => {
     const extraDamageData = localStorage.getItem('rpgSheet:Character[damage]');
 
-    if (!extraDamageData) return 0;
+    if (!extraDamageData) {
+      localStorage.setItem('rpgSheet:Character[damage]', String(0));
+      return 0;
+    }
 
     return JSON.parse(extraDamageData);
   });
-  const [paranormal, setParanormal] = useState<number>(() => {
+  const [paranormal, setParanormal] = useState(() => {
     const paranormalData = localStorage.getItem(
       'rpgSheet:Character[paranormal]',
     );
 
-    if (!paranormalData) return 0;
+    if (!paranormalData) {
+      localStorage.setItem('rpgSheet:Character[paranormal]', String(0));
+      return 0;
+    }
 
     return JSON.parse(paranormalData);
   });
-  const [body, setBody] = useState<number>(() => {
+  const [body, setBody] = useState(() => {
     const bodyData = localStorage.getItem('rpgSheet:Character[body]');
 
-    if (!bodyData) return 0;
+    if (!bodyData) {
+      localStorage.setItem('rpgSheet:Character[body]', String(0));
+      return 0;
+    }
 
     return JSON.parse(bodyData);
   });

@@ -1,12 +1,12 @@
 import { ReactElement } from 'react';
 
-import { InputAttributePoint } from '../InputAttributePoint';
+import { InputAttributeItem } from './AttributePointItem';
 
 import { useAttribute } from '../../hooks/useAttribute';
 
 import { Container, Content } from './styles';
 
-export function AttributePointsContainer(): ReactElement {
+export function AttributePoints(): ReactElement {
   const {
     appearance,
     constitution,
@@ -33,77 +33,78 @@ export function AttributePointsContainer(): ReactElement {
     handleSetPower,
     handleSetStrength,
   } = useAttribute();
+
   return (
     <Container>
       <h3>Atributos</h3>
       <Content>
-        <InputAttributePoint
+        <InputAttributeItem
           type="number"
           name="Aparência"
           onChange={e => handleSetAppearance(Number(e.target.value))}
           abilityValue={appearance}
         />
-        <InputAttributePoint
+        <InputAttributeItem
           type="number"
           name="Constituição"
           onChange={e => handleSetConstitution(Number(e.target.value))}
           abilityValue={constitution}
         />
-        <InputAttributePoint
+        <InputAttributeItem
           type="number"
           name="Destreza"
           onChange={e => handleSetDexterity(Number(e.target.value))}
           abilityValue={dexterity}
         />
-        <InputAttributePoint
+        <InputAttributeItem
           type="number"
           name="Educação"
           onChange={e => handleSetEducation(Number(e.target.value))}
           abilityValue={education}
         />
-        <InputAttributePoint
+        <InputAttributeItem
           type="number"
           name="Força"
           onChange={e => handleSetStrength(Number(e.target.value))}
           abilityValue={strength}
         />
-        <InputAttributePoint
+        <InputAttributeItem
           type="number"
           name="Inteligência"
           onChange={e => handleSetIntelligence(Number(e.target.value))}
           abilityValue={intelligence}
         />
-        <InputAttributePoint
+        <InputAttributeItem
           type="number"
           name="Poder"
           onChange={e => handleSetPower(Number(e.target.value))}
           abilityValue={power}
         />
-        <InputAttributePoint
+        <InputAttributeItem
           type="number"
           name="Sorte"
           onChange={e => handleSetLuck(Number(e.target.value))}
           abilityValue={luck}
         />
-        <InputAttributePoint
+        <InputAttributeItem
           type="number"
           name="Movimento"
           onChange={e => handleSetMovement(Number(e.target.value))}
           abilityValue={movement}
         />
-        <InputAttributePoint
+        <InputAttributeItem
           type="number"
           name="?"
           onChange={e => handleSetExtra1(Number(e.target.value))}
           abilityValue={extra1}
         />
-        <InputAttributePoint
+        <InputAttributeItem
           type="number"
           name="?"
           onChange={e => handleSetExtra2(Number(e.target.value))}
           abilityValue={extra2}
         />
-        <InputAttributePoint
+        <InputAttributeItem
           type="number"
           name="?"
           onChange={e => handleSetExtra3(Number(e.target.value))}

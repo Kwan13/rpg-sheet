@@ -162,6 +162,8 @@ export function SkillsProvider({
         },
       };
 
+      localStorage.setItem('rpgSheet:Skills', JSON.stringify(data));
+
       return data;
     }
 

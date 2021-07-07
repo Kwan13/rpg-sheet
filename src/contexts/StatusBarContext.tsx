@@ -30,6 +30,7 @@ export function StatusBarProvider({
     );
 
     if (!occultismResult) {
+      localStorage.setItem('rpgSheet:Character[occultism]', String(12));
       return 12;
     }
 
@@ -39,6 +40,7 @@ export function StatusBarProvider({
     const sanityResult = localStorage.getItem('rpgSheet:Character[sanity]');
 
     if (!sanityResult) {
+      localStorage.setItem('rpgSheet:Character[sanity]', String(12));
       return 12;
     }
 
@@ -46,7 +48,9 @@ export function StatusBarProvider({
   });
   const [life, setLife] = useState(() => {
     const lifeResult = localStorage.getItem('rpgSheet:Character[life]');
+
     if (!lifeResult) {
+      localStorage.setItem('rpgSheet:Character[life]', String(12));
       return 12;
     }
 
@@ -56,6 +60,7 @@ export function StatusBarProvider({
     const maxLifeResult = localStorage.getItem('rpgSheet:Character[maxLife]');
 
     if (!maxLifeResult) {
+      localStorage.setItem('rpgSheet:Character[maxLife]', String(12));
       return 12;
     }
 
@@ -67,6 +72,7 @@ export function StatusBarProvider({
     );
 
     if (!maxSanityResult) {
+      localStorage.setItem('rpgSheet:Character[maxSanity]', String(12));
       return 12;
     }
 
@@ -78,6 +84,7 @@ export function StatusBarProvider({
     );
 
     if (!maxOccultismResult) {
+      localStorage.setItem('rpgSheet:Character[maxOccultism]', String(12));
       return 12;
     }
 

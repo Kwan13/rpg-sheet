@@ -57,29 +57,6 @@ export function DiceProvider({ children }: DiceProviderProps): ReactElement {
       { normal: 1, good: 11, extreme: 18 },
     ];
 
-    // const table = [
-    //   { normal: 1, good: 11, extreme: 18 },
-    //   { normal: 2, good: 12, extreme: 18 },
-    //   { normal: 3, good: 12, extreme: 18 },
-    //   { normal: 4, good: 13, extreme: 18 },
-    //   { normal: 5, good: 13, extreme: 18 },
-    //   { normal: 6, good: 14, extreme: 18 },
-    //   { normal: 7, good: 14, extreme: 19 },
-    //   { normal: 8, good: 15, extreme: 19 },
-    //   { normal: 9, good: 15, extreme: 19 },
-    //   { normal: 10, good: 16, extreme: 19 },
-    //   { normal: 11, good: 16, extreme: 19 },
-    //   { normal: 12, good: 17, extreme: 20 },
-    //   { normal: 13, good: 17, extreme: 20 },
-    //   { normal: 14, good: 18, extreme: 20 },
-    //   { normal: 15, good: 18, extreme: 20 },
-    //   { normal: 16, good: 19, extreme: 20 },
-    //   { normal: 17, good: 19 },
-    //   { normal: 18, good: 20 },
-    //   { normal: 19, good: 20 },
-    //   { normal: 20 },
-    // ];
-
     const type = table[ability - 1];
 
     if (type.extreme) {

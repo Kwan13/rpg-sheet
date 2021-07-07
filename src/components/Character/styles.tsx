@@ -5,7 +5,6 @@ export const Container = styled.div`
   background-color: var(--gray-800);
   border-radius: 8px;
   width: 100%;
-  /* box-shadow: 0 5px 10px rgb(0 0 0 / 12%); */
 
   > header {
     margin-bottom: 40px;
@@ -52,6 +51,55 @@ export const FormGroup = styled.form`
     label {
       font-size: 12px;
       text-transform: uppercase;
+    }
+  }
+`;
+
+export const ProfileActionGroup = styled.div`
+  margin-top: 40px;
+  border: 1px solid var(--gray-50);
+  border-radius: 8px;
+  padding: 10px;
+
+  h3 {
+    color: var(--pink-500);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      background: var(--purple-400);
+      color: var(--white);
+      border: 0;
+      border-radius: 8px;
+      padding: 10px;
+      text-transform: uppercase;
+      transition: filter 0.2s;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        margin-right: 8px;
+      }
+
+      & + button {
+        margin-left: 8px;
+      }
+
+      &:hover {
+        filter: brightness(0.8);
+      }
+    }
+
+    .deleteButton {
+      background: var(--red-500);
     }
   }
 `;

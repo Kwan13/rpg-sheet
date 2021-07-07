@@ -4,7 +4,7 @@ import { Navbar } from '../../components/Navbar';
 import { CharacterForm } from '../../components/CharacterForm';
 import { Combat } from '../../components/Combat';
 import { Character } from '../../components/Character';
-import { AttributePointsContainer } from '../../components/AttributePointsContainer';
+import { AttributePoints } from '../../components/AttributePoints';
 import { Skills } from '../../components/Skills';
 
 import { Container, PersonalDataSession, AttributesSession } from './styles';
@@ -18,7 +18,7 @@ export default function Home(): ReactElement {
         <Character />
       </PersonalDataSession>
       <AttributesSession>
-        <AttributePointsContainer />
+        <AttributePoints />
       </AttributesSession>
       <Combat />
       <Skills />

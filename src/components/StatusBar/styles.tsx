@@ -26,6 +26,7 @@ export const Bar = styled.span<BarProps>`
   height: 30px;
   cursor: pointer;
   width: 100%;
+  transition: width 1.2s;
 
   display: flex;
   align-items: center;

@@ -49,6 +49,13 @@ export const Content = styled.div`
       display: block;
     }
 
+    h4 {
+      color: var(--gray-200);
+      margin: 8px 0;
+
+      display: block;
+    }
+
     div + div {
       margin-top: 10px;
     }
@@ -61,6 +68,7 @@ export const Content = styled.div`
       color: var(--white);
       border-radius: 3px;
       border: 0;
+      text-transform: uppercase;
     }
   }
 `;

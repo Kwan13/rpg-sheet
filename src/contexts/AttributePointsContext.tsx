@@ -44,6 +44,7 @@ export function AttributePointsProvider({
     );
 
     if (!intelligenceResult) {
+      localStorage.setItem('rpgSheet:Attribute[intelligence]', String(0));
       return 0;
     }
 
@@ -55,6 +56,7 @@ export function AttributePointsProvider({
     );
 
     if (!constitutionData) {
+      localStorage.setItem('rpgSheet:Attribute[constitution]', String(0));
       return 0;
     }
 
@@ -66,6 +68,7 @@ export function AttributePointsProvider({
     );
 
     if (!appearanceData) {
+      localStorage.setItem('rpgSheet:Attribute[appearance]', String(0));
       return 0;
     }
 
@@ -75,6 +78,7 @@ export function AttributePointsProvider({
     const dexterityData = localStorage.getItem('rpgSheet:Attribute[dexterity]');
 
     if (!dexterityData) {
+      localStorage.setItem('rpgSheet:Attribute[dexterity]', String(0));
       return 0;
     }
 
@@ -84,6 +88,7 @@ export function AttributePointsProvider({
     const educationData = localStorage.getItem('rpgSheet:Attribute[education]');
 
     if (!educationData) {
+      localStorage.setItem('rpgSheet:Attribute[education]', String(0));
       return 0;
     }
 
@@ -93,6 +98,7 @@ export function AttributePointsProvider({
     const strengthData = localStorage.getItem('rpgSheet:Attribute[strength]');
 
     if (!strengthData) {
+      localStorage.setItem('rpgSheet:Attribute[strength]', String(0));
       return 0;
     }
 
@@ -102,6 +108,7 @@ export function AttributePointsProvider({
     const movementData = localStorage.getItem('rpgSheet:Attribute[movement]');
 
     if (!movementData) {
+      localStorage.setItem('rpgSheet:Attribute[movement]', String(0));
       return 0;
     }
 
@@ -111,6 +118,7 @@ export function AttributePointsProvider({
     const extra1Data = localStorage.getItem('rpgSheet:Attribute[extra1]');
 
     if (!extra1Data) {
+      localStorage.setItem('rpgSheet:Attribute[extra1]', String(0));
       return 0;
     }
 
@@ -120,6 +128,7 @@ export function AttributePointsProvider({
     const extra2Data = localStorage.getItem('rpgSheet:Attribute[extra2]');
 
     if (!extra2Data) {
+      localStorage.setItem('rpgSheet:Attribute[extra2]', String(0));
       return 0;
     }
 
@@ -129,6 +138,7 @@ export function AttributePointsProvider({
     const extra3Data = localStorage.getItem('rpgSheet:Attribute[extra3]');
 
     if (!extra3Data) {
+      localStorage.setItem('rpgSheet:Attribute[extra3]', String(0));
       return 0;
     }
 
@@ -138,6 +148,7 @@ export function AttributePointsProvider({
     const powerData = localStorage.getItem('rpgSheet:Attribute[power]');
 
     if (!powerData) {
+      localStorage.setItem('rpgSheet:Attribute[power]', String(0));
       return 0;
     }
 
@@ -147,6 +158,7 @@ export function AttributePointsProvider({
     const luckData = localStorage.getItem('rpgSheet:Attribute[luck]');
 
     if (!luckData) {
+      localStorage.setItem('rpgSheet:Attribute[luck]', String(0));
       return 0;
     }
 

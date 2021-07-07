@@ -1,10 +1,10 @@
 import { InputHTMLAttributes, ReactElement, useState } from 'react';
 
-import { Modal } from '../Modal';
-import { useDice } from '../../hooks/useDice';
+import { Modal } from '../../Modal';
+import { useDice } from '../../../hooks/useDice';
 
 import { Container, ModalContent } from './styles';
-import diceImg from '../../assets/dice.svg';
+import diceImg from '../../../assets/dice.svg';
 
 interface InputAttributePointProps
   extends InputHTMLAttributes<HTMLInputElement> {
@@ -12,7 +12,7 @@ interface InputAttributePointProps
   abilityValue: number;
 }
 
-export function InputAttributePoint({
+export function InputAttributeItem({
   name,
   abilityValue,
   ...rest

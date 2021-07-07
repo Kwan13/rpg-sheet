@@ -28,6 +28,7 @@ export function CombatProvider({ children }: CombatProvider): ReactElement {
     const weaponsData = localStorage.getItem('rpgSheet:Combat');
 
     if (!weaponsData) {
+      localStorage.setItem('rpgSheet:Combat', String([]));
       return [];
     }
 

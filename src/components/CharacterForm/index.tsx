@@ -7,22 +7,26 @@ import * as yup from 'yup';
 import { useCharacter } from '../../hooks/useCharacter';
 
 import { Input } from '../Input';
+import { TextArea } from '../TextArea';
 
 import { Container } from './styles';
 
 type CharacterForm = {
   avatar: string;
+  fullBody: string;
   name: string;
   player: string;
   occupation: string;
   age: number;
-  sex: 'masc' | 'fem';
+  sex: 'masculino' | 'feminino';
   birthplace: string;
   residence: string;
+  description: string;
 };
 
 const schema = yup.object().shape({
   avatar: yup.string().required('campo obrigatório'),
+  fullBody: yup.string().required('campo obrigatório'),
   name: yup.string().required('campo obrigatório'),
   player: yup.string().required('campo obrigatório'),
   occupation: yup.string().required('campo obrigatório'),
@@ -30,6 +34,7 @@ const schema = yup.object().shape({
   sex: yup.string().required('campo obrigatório'),
   birthplace: yup.string().required('campo obrigatório'),
   residence: yup.string().required('campo obrigatório'),
+  // description: yup.string().required('campo obrigatório'),
 });
 
 export function CharacterForm(): ReactElement {
@@ -48,7 +53,13 @@ export function CharacterForm(): ReactElement {
 
   return (
     <Container onSubmit={handleSubmit(onSubmit)}>
-      <h3>Personagem</h3>
+      <div className="header">
+        <h3>Personagem</h3>
+        <button type="submit">
+          <FaSave color="#797D9A" size={20} />
+        </button>
+      </div>
+
       <label htmlFor="avatar">Avatar URL:</label>
       <Input
         {...register('avatar')}
@@ -56,6 +67,14 @@ export function CharacterForm(): ReactElement {
         name="avatar"
         error={errors.avatar?.message}
         defaultValue={character.avatar}
+      />
+      <label htmlFor="fullBody">Corpo URL:</label>
+      <Input
+        {...register('fullBody')}
+        id="fullBody"
+        name="fullBody"
+        error={errors.fullBody?.message}
+        defaultValue={character.fullBody}
       />
       <label htmlFor="name">Nome:</label>
       <Input
@@ -96,14 +115,18 @@ export function CharacterForm(): ReactElement {
           {...register('sex')}
           name="sex"
           id="sex"
-          defaultValue={character.name}
+          defaultValue={character.sex}
         >
-          <option value="masc">Masculino</option>
-          <option value="fem">Feminino</option>
+          <option value="masculino" selected={character.sex === 'masculino'}>
+            Masculino
+          </option>
+          <option value="feminino" selected={character.sex === 'feminino'}>
+            Feminino
+          </option>
         </select>
       </div>
 
-      <label htmlFor="birthplace">Local de nascimento</label>
+      <label htmlFor="birthplace">Local de nascimento:</label>
       <Input
         {...register('birthplace')}
         id="birthplace"
@@ -112,7 +135,7 @@ export function CharacterForm(): ReactElement {
         defaultValue={character.birthplace}
       />
 
-      <label htmlFor="residence">Local de residência</label>
+      <label htmlFor="residence">Local de residência:</label>
       <Input
         {...register('residence')}
         id="residence"
@@ -121,10 +144,14 @@ export function CharacterForm(): ReactElement {
         defaultValue={character.residence}
       />
 
-      <button type="submit">
-        <FaSave color="#FFFFFF" />
-        Salvar
-      </button>
+      <label htmlFor="description">Descrição:</label>
+      <TextArea
+        {...register('description')}
+        name="description"
+        id="description"
+        error={errors.description?.message}
+        defaultValue={character.description}
+      />
     </Container>
   );
 }

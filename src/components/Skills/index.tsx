@@ -4,7 +4,7 @@ import { FaSave } from 'react-icons/fa';
 
 import { useSkills } from '../../hooks/useSkills';
 
-import { SkillItem } from '../SkillItem';
+import { SkillItem } from './SkillItem';
 import { Input } from '../Input';
 
 import { Container, GridContent } from './styles';
