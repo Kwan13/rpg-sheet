@@ -10,6 +10,7 @@ export const Container = styled.div`
     margin-bottom: 40px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     img {
       width: 150px;
@@ -20,6 +21,16 @@ export const Container = styled.div`
     h3 {
       text-transform: uppercase;
       margin-left: 10px;
+    }
+
+    button {
+      background: transparent;
+      border: 0;
+
+      img {
+        width: 80px;
+        height: 80px;
+      }
     }
   }
 `;
@@ -57,9 +68,9 @@ export const FormGroup = styled.form`
 
 export const ProfileActionGroup = styled.div`
   margin-top: 40px;
-  border: 1px solid var(--gray-50);
+  border: 1px solid var(--purple-400);
   border-radius: 8px;
-  padding: 10px;
+  padding: 20px;
 
   h3 {
     color: var(--pink-500);

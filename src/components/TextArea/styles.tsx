@@ -10,6 +10,7 @@ export const Container = styled.div`
   textarea {
     width: 100%;
     height: 150px;
+    padding: 5px;
     border: 1px solid var(--purple-400);
     border-radius: 5px;
     background: rgba(0, 0, 0, 0.4);

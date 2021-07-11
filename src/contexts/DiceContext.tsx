@@ -8,6 +8,7 @@ type DiceContextData = {
   dice: number;
   status: string;
   handleDiceStatus(ability: number): void;
+  handleDice(): void;
 };
 
 export const DiceContext = createContext({} as DiceContextData);
@@ -98,8 +99,16 @@ export function DiceProvider({ children }: DiceProviderProps): ReactElement {
     }
   }
 
+  function handleDice() {
+    const randomDice = Math.floor(Math.random() * (20 - 1 + 1)) + 1;
+
+    setDice(randomDice);
+  }
+
   return (
-    <DiceContext.Provider value={{ dice, status, handleDiceStatus }}>
+    <DiceContext.Provider
+      value={{ dice, status, handleDiceStatus, handleDice }}
+    >
       {children}
     </DiceContext.Provider>
   );

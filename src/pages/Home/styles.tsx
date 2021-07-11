@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const PersonalDataSession = styled.section`
-  margin-top: 50px;
+  margin-top: 20px;
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);

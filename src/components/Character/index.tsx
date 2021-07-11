@@ -3,16 +3,19 @@ import { FaFileDownload, FaFileImport } from 'react-icons/fa';
 import { AiOutlineUserDelete } from 'react-icons/ai';
 import { useForm } from 'react-hook-form';
 
+import { Modal } from '../Modal';
+import { TextArea } from '../TextArea';
+import { Input } from '../Input';
 import { StatusBar } from '../StatusBar';
+
 import { useStatusBar } from '../../hooks/useStatusBar';
 import { useCharacter } from '../../hooks/useCharacter';
 import { useSaveProfile } from '../../hooks/useSaveProfile';
-import { Modal } from '../Modal';
-import { TextArea } from '../TextArea';
+import { useDice } from '../../hooks/useDice';
 
 import { Container, InputGroup, FormGroup, ProfileActionGroup } from './styles';
 import avatar from '../../assets/avatar.jpeg';
-import { Input } from '../Input';
+import diceImg from '../../assets/dice.svg';
 
 type formData = {
   profile: string;
@@ -20,6 +23,8 @@ type formData = {
 
 export function Character(): ReactElement {
   const [isOpen, setIsOpen] = useState(false);
+  const [diceModalOpen, setDiceModalOpen] = useState(false);
+
   const {
     handleSetSanity,
     handleSetMaxsanity,
@@ -46,21 +51,30 @@ export function Character(): ReactElement {
   const { handleExportProfile, handleImportProfile, handleDeleteProfile } =
     useSaveProfile();
 
+  const { handleDice, dice } = useDice();
+
   const { handleSubmit, register } = useForm();
 
   function onSubmit(data: formData) {
     handleImportProfile(data);
   }
 
-  function handleToggleOpenModal() {
+  function handleToggleImportModal() {
     setIsOpen(!isOpen);
+  }
+
+  function handleToggleDiceModal() {
+    setDiceModalOpen(!diceModalOpen);
+    handleDice();
   }
 
   return (
     <Container>
       <header>
         <img src={character?.avatar || avatar} alt="avatar" />
-        <h3>{character?.name}</h3>
+        <button type="button" onClick={handleToggleDiceModal}>
+          <img src={diceImg} alt="dado" />
+        </button>
       </header>
       <main>
         <StatusBar
@@ -150,7 +164,7 @@ export function Character(): ReactElement {
               <FaFileDownload />
               exportar
             </button>
-            <button type="button" onClick={handleToggleOpenModal}>
+            <button type="button" onClick={handleToggleImportModal}>
               <FaFileImport />
               importar
             </button>
@@ -166,7 +180,10 @@ export function Character(): ReactElement {
         </ProfileActionGroup>
       </main>
       {isOpen && (
-        <Modal modalTitle="Importar perfil" closeModal={handleToggleOpenModal}>
+        <Modal
+          modalTitle="Importar perfil"
+          closeModal={handleToggleImportModal}
+        >
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextArea
               {...register('profile')}
@@ -177,6 +194,11 @@ export function Character(): ReactElement {
               importar
             </button>
           </form>
+        </Modal>
+      )}
+      {diceModalOpen && (
+        <Modal modalTitle="jogar dado" closeModal={handleToggleDiceModal}>
+          <h1>Dado: {dice}</h1>
         </Modal>
       )}
     </Container>

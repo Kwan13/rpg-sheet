@@ -117,11 +117,7 @@ export function Combat(): ReactElement {
       </table>
       {weapons.length <= 0 && (
         <div className="emptyWeapons">
-          <img src={swordsImg} alt="" />
-          <p>
-            parece que você está sem armas viajante... pegue uma arma e continue
-            sua jornada 🛡⚔️.
-          </p>
+          <img src={swordsImg} alt="espada" />
         </div>
       )}
 
