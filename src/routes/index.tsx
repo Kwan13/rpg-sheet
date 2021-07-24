@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import Sheet from '../pages/Sheet';
 import Inventory from '../pages/Inventory';
+import Character from '../pages/Character';
 
 export function Routes(): ReactElement {
   return (
@@ -12,7 +13,7 @@ export function Routes(): ReactElement {
         <Route path="/" exact component={Home} />
         <Route path="/inventory" component={Inventory} />
         <Route path="/sheet" component={Sheet} />
-        <Route path="/character/new" component={Sheet} />
+        <Route path="/character/new" component={Character} />
       </Switch>
     </BrowserRouter>
   );

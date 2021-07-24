@@ -16,7 +16,7 @@ export const Content = styled.main`
   max-width: 600px;
   width: 100%;
   height: 100vh;
-  background-color: var(--gray-800);
+  background-color: var(--gray-900);
 
   display: flex;
   flex-direction: column;
