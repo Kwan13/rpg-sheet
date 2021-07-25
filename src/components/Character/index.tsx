@@ -1,46 +1,43 @@
 import { ReactElement, useState } from 'react';
-import { FaFileDownload, FaFileImport } from 'react-icons/fa';
+import { FaFileDownload } from 'react-icons/fa';
 import { AiOutlineUserDelete } from 'react-icons/ai';
-import { useForm } from 'react-hook-form';
 
-import { Modal } from '../Modal';
-import { TextArea } from '../TextArea';
-import { Input } from '../Input';
 import { StatusBar } from '../StatusBar';
+import { Input } from '../Input';
+import { Modal } from '../Modal';
 
 import { useStatusBar } from '../../hooks/useStatusBar';
+
+import {
+  Container,
+  Content,
+  InputGroup,
+  FormGroup,
+  ProfileActionGroup,
+} from './styles';
+import avatarImg from '../../assets/avatar.jpeg';
+import diceImg from '../../assets/dice.svg';
 import { useCharacter } from '../../hooks/useCharacter';
 import { useSaveProfile } from '../../hooks/useSaveProfile';
 import { useDice } from '../../hooks/useDice';
 
-import { Container, InputGroup, FormGroup, ProfileActionGroup } from './styles';
-import avatar from '../../assets/avatar.jpeg';
-import diceImg from '../../assets/dice.svg';
-
-type formData = {
-  profile: string;
-};
-
 export function Character(): ReactElement {
-  const [isOpen, setIsOpen] = useState(false);
-  const [diceModalOpen, setDiceModalOpen] = useState(false);
-
+  const [openModal, setOpenModal] = useState(false);
   const {
-    handleSetSanity,
-    handleSetMaxsanity,
-    handleSetOccultism,
-    handleSetMaxOccultism,
-    handleSetLife,
-    handleSetMaxLife,
     life,
     maxLife,
     occultism,
     maxOccultism,
     sanity,
     maxSanity,
+    handleSetLife,
+    handleSetMaxLife,
+    handleSetSanity,
+    handleSetMaxsanity,
+    handleSetOccultism,
+    handleSetMaxOccultism,
   } = useStatusBar();
   const {
-    character,
     body,
     extraDamage,
     paranormal,
@@ -48,83 +45,99 @@ export function Character(): ReactElement {
     handleSetExtraDamage,
     handleSetParanormal,
   } = useCharacter();
-  const { handleExportProfile, handleImportProfile, handleDeleteProfile } =
-    useSaveProfile();
-
   const { handleDice, dice } = useDice();
+  const { handleExportProfile, handleDeleteProfile } = useSaveProfile();
 
-  const { handleSubmit, register } = useForm();
+  function handleToggleOpenModal() {
+    setOpenModal(!openModal);
 
-  function onSubmit(data: formData) {
-    handleImportProfile(data);
+    if (openModal) handleDice();
   }
-
-  function handleToggleImportModal() {
-    setIsOpen(!isOpen);
-  }
-
-  function handleToggleDiceModal() {
-    setDiceModalOpen(!diceModalOpen);
-    handleDice();
-  }
-
   return (
     <Container>
+      <ProfileActionGroup>
+        <div>
+          <h3>Ações de perfil:</h3>
+          <button
+            className="exportButton"
+            type="button"
+            onClick={handleExportProfile}
+          >
+            <FaFileDownload />
+            exportar
+          </button>
+
+          <button
+            className="excludeButton"
+            type="button"
+            onClick={handleDeleteProfile}
+          >
+            <AiOutlineUserDelete />
+            excluir
+          </button>
+        </div>
+      </ProfileActionGroup>
       <header>
-        <img src={character?.avatar || avatar} alt="avatar" />
-        <button type="button" onClick={handleToggleDiceModal}>
-          <img src={diceImg} alt="dado" />
+        <img src={avatarImg} alt="avatar" />
+
+        <button type="button" onClick={handleToggleOpenModal}>
+          <img src={diceImg} alt="dice" />
         </button>
       </header>
-      <main>
+      <Content>
         <StatusBar
           name="Vida"
-          color="#38A169"
           value={life}
+          color="#38A169"
           maxValue={maxLife}
           setValue={handleSetLife}
           setMaxValue={handleSetMaxLife}
         />
+
         <InputGroup>
-          <div className="checkboxContainer">
-            <input type="checkbox" name="serious_damage" id="serious_damage" />
-            <label htmlFor="serious_damage">Lesão grave</label>
+          <div>
+            <input type="checkbox" />
+            Lesão grave
           </div>
-          <div className="checkboxContainer">
-            <input type="checkbox" name="damage" id="damage" />
-            <label htmlFor="damage">Lesionamento</label>
+          <div>
+            <input type="checkbox" />
+            Lesionamento
           </div>
-          <div className="checkboxContainer">
-            <input type="checkbox" name="dying" id="dying" />
-            <label htmlFor="dying">Morrendo</label>
+          <div>
+            <input type="checkbox" />
+            Morrendo
           </div>
         </InputGroup>
+
         <StatusBar
           name="Sanidade"
-          color="#D53F8C"
           value={sanity}
+          color="#D53F8C"
           maxValue={maxSanity}
           setValue={handleSetSanity}
           setMaxValue={handleSetMaxsanity}
         />
+
         <InputGroup>
-          <div className="checkboxContainer">
-            <input type="checkbox" name="traumatized" id="traumatized" />
-            <label htmlFor="traumatized">Traumatizado</label>
+          <div>
+            <input type="checkbox" />
+            Traumatizado
           </div>
-          <div className="checkboxContainer">
-            <input type="checkbox" name="maddened" id="maddened" />
-            <label htmlFor="maddened">Enlouquecido</label>
+          <div>
+            <input type="checkbox" />
+            Enlouquecido
           </div>
         </InputGroup>
+
         <StatusBar
           name="Ocultismo"
-          color="#9F7AEA"
           value={occultism}
+          color="#9F7AEA"
           maxValue={maxOccultism}
           setValue={handleSetOccultism}
           setMaxValue={handleSetMaxOccultism}
         />
+
         <FormGroup>
           <div>
             <label htmlFor="extra_damage">Dano extra</label>
@@ -157,48 +170,11 @@ export function Character(): ReactElement {
             />
           </div>
         </FormGroup>
-        <ProfileActionGroup>
-          <h3>Ações de perfil:</h3>
-          <div>
-            <button type="button" onClick={handleExportProfile}>
-              <FaFileDownload />
-              exportar
-            </button>
-            <button type="button" onClick={handleToggleImportModal}>
-              <FaFileImport />
-              importar
-            </button>
-            <button
-              className="deleteButton"
-              type="button"
-              onClick={handleDeleteProfile}
-            >
-              <AiOutlineUserDelete />
-              excluir
-            </button>
-          </div>
-        </ProfileActionGroup>
-      </main>
-      {isOpen && (
-        <Modal
-          modalTitle="Importar perfil"
-          closeModal={handleToggleImportModal}
-        >
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <TextArea
-              {...register('profile')}
-              name="profile"
-              placeholder="cole os dados aqui"
-            />
-            <button type="submit" className="submitButton">
-              importar
-            </button>
-          </form>
-        </Modal>
-      )}
-      {diceModalOpen && (
-        <Modal modalTitle="jogar dado" closeModal={handleToggleDiceModal}>
-          <h1>Dado: {dice}</h1>
+      </Content>
+
+      {openModal && (
+        <Modal modalTitle="Jogar dado" closeModal={handleToggleOpenModal}>
+          <h2>Dado: {dice}</h2>
         </Modal>
       )}
     </Container>

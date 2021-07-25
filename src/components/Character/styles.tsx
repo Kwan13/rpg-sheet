@@ -1,31 +1,27 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding: 30px;
-  background-color: var(--gray-800);
-  border-radius: 8px;
-  width: 100%;
+  padding: 50px;
 
   > header {
-    margin-bottom: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     img {
-      width: 150px;
-      height: 150px;
+      width: 130px;
       border-radius: 50%;
     }
 
-    h3 {
-      text-transform: uppercase;
-      margin-left: 10px;
-    }
-
     button {
+      width: 100px;
+      height: 100px;
       background: transparent;
       border: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       img {
         width: 80px;
@@ -35,82 +31,76 @@ export const Container = styled.div`
   }
 `;
 
-export const InputGroup = styled.div`
-  display: flex;
-  justify-content: space-around;
-
-  .checkboxContainer {
-    margin: 15px 0;
-    display: flex;
-    align-items: center;
-
-    input {
-      margin-right: 8px;
-    }
-  }
+export const Content = styled.div`
+  margin-top: 30px;
+  max-width: 500px;
+  width: 100%;
 `;
 
-export const FormGroup = styled.form`
+export const InputGroup = styled.div`
   margin-top: 20px;
+  margin-bottom: 20px;
+
   display: flex;
+  align-items: center;
   justify-content: space-around;
 
   div {
-    max-width: 120px;
-    width: 100%;
-
-    label {
-      font-size: 12px;
-      text-transform: uppercase;
+    input {
+      margin-right: 8px;
     }
+
+    display: flex;
+    align-items: center;
+  }
+`;
+
+export const FormGroup = styled.div`
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  input {
+    width: 100px;
   }
 `;
 
 export const ProfileActionGroup = styled.div`
-  margin-top: 40px;
-  border: 1px solid var(--purple-400);
-  border-radius: 8px;
-  padding: 20px;
-
-  h3 {
-    color: var(--pink-500);
-    text-transform: uppercase;
-    margin-bottom: 30px;
-  }
+  width: 100%;
+  display: flex;
 
   div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-left: auto;
+    h3 {
+      margin-right: 8px;
+    }
 
     button {
-      background: var(--purple-400);
-      color: var(--white);
-      border: 0;
-      border-radius: 8px;
       padding: 10px;
-      text-transform: uppercase;
-      transition: filter 0.2s;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      svg {
-        margin-right: 8px;
-      }
+      height: 40px;
+      border-radius: 8px;
+      border: 0;
+      color: var(--white);
 
       & + button {
         margin-left: 8px;
       }
 
-      &:hover {
-        filter: brightness(0.8);
+      svg {
+        margin-right: 8px;
       }
     }
 
-    .deleteButton {
+    .exportButton {
+      background: var(--purple-400);
+    }
+
+    .excludeButton {
       background: var(--red-500);
     }
+
+    display: flex;
+    align-items: center;
   }
 `;

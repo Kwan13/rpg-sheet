@@ -77,29 +77,27 @@ export const Content = styled.main`
     }
   }
 
-  form {
-    textarea {
-      width: 300px;
+  > button {
+    height: 45px;
+    max-width: 300px;
+    width: 100%;
+    background-color: var(--pink-500);
+    color: var(--white);
+    padding: 10px 70px;
+    border-radius: 8px;
+    border: 0;
+    transition: filter 0.2s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      margin-right: 8px;
     }
 
-    button {
-      margin-top: 20px;
-      height: 45px;
-      width: 300px;
-      background-color: var(--pink-500);
-      color: var(--white);
-      padding: 10px 70px;
-      border-radius: 8px;
-      border: 0;
-      transition: filter 0.2s;
-
-      svg {
-        margin-right: 8px;
-      }
-
-      &:hover {
-        filter: brightness(0.8);
-      }
+    &:hover {
+      filter: brightness(0.8);
     }
   }
 `;

@@ -9,10 +9,8 @@ export const Container = styled.div`
 
 export const PersonalDataSession = styled.section`
   margin-top: 20px;
-
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  background-color: var(--gray-800);
+  border-radius: 8px;
 `;
 
 export const AttributesSession = styled.section`

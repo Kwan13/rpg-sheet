@@ -1,7 +1,6 @@
 import { ReactElement } from 'react';
 
 import { Navbar } from '../../components/Navbar';
-import { CharacterForm } from '../../components/CharacterForm';
 import { Combat } from '../../components/Combat';
 import { Character } from '../../components/Character';
 import { AttributePoints } from '../../components/AttributePoints';
@@ -14,7 +13,6 @@ export default function Sheet(): ReactElement {
     <Container>
       <Navbar />
       <PersonalDataSession>
-        <CharacterForm />
         <Character />
       </PersonalDataSession>
       <AttributesSession>
