@@ -31,6 +31,7 @@ type ProfileData = {
   };
   attributes: {
     appearance: string;
+    intelligence: string;
     constitution: string;
     dexterity: string;
     education: string;
@@ -77,6 +78,7 @@ export function SaveProfileProvider({
       },
       attributes: {
         appearance: localStorage.getItem('rpgSheet:Attribute[appearance]'),
+        intelligence: localStorage.getItem('rpgSheet:Attribute[intelligence]'),
         constitution: localStorage.getItem('rpgSheet:Attribute[constitution]'),
         dexterity: localStorage.getItem('rpgSheet:Attribute[dexterity]'),
         education: localStorage.getItem('rpgSheet:Attribute[education]'),
@@ -141,6 +143,10 @@ export function SaveProfileProvider({
       attributes.constitution,
     );
     localStorage.setItem('rpgSheet:Attribute[dexterity]', attributes.dexterity);
+    localStorage.setItem(
+      'rpgSheet:Attribute[intelligence]',
+      attributes.intelligence,
+    );
     localStorage.setItem('rpgSheet:Attribute[education]', attributes.education);
     localStorage.setItem('rpgSheet:Attribute[strength]', attributes.strength);
     localStorage.setItem('rpgSheet:Attribute[movement]', attributes.movement);
@@ -168,6 +174,7 @@ export function SaveProfileProvider({
     }
 
     localStorage.clear();
+    window.location.reload();
   }
 
   return (
