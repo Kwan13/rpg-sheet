@@ -67,6 +67,12 @@ type FormData = {
   swim: number;
   trackBack: number;
   trick: number;
+  nature: number;
+  perception: number;
+  religion: number;
+  survival: number;
+  intuition: number;
+  intimidation: number;
 };
 
 export function Skills(): ReactElement {
@@ -101,6 +107,8 @@ export function Skills(): ReactElement {
         locate: data.locate,
         occultism: data.occultism,
         craft: data.craft,
+        intuition: data.intuition,
+        survival: data.survival,
       },
       dexterity: {
         dodge: data.dodge,
@@ -134,6 +142,9 @@ export function Skills(): ReactElement {
         trackBack: data.trackBack,
         electricalRepair: data.electricalRepair,
         mechanicalRepair: data.mechanicalRepair,
+        nature: data.nature,
+        perception: data.perception,
+        religion: data.religion,
       },
       charisma: {
         bargain: data.bargain,
@@ -143,6 +154,7 @@ export function Skills(): ReactElement {
         persuade: data.persuade,
         charm: data.charm,
         trick: data.trick,
+        intimidation: data.intimidation,
       },
     };
 
@@ -261,6 +273,22 @@ export function Skills(): ReactElement {
             </div>
           </SkillItem>
           <SkillItem name="Sabedoria">
+            <div>
+              <h4>INTUIÇÃO:</h4>
+              <Input
+                type="number"
+                {...register('intuition')}
+                defaultValue={skills.wisdom.intuition}
+              />
+            </div>
+            <div>
+              <h4>SOBREVIVÊNCIA:</h4>
+              <Input
+                type="number"
+                {...register('survival')}
+                defaultValue={skills.wisdom.survival}
+              />
+            </div>
             <div>
               <h4>ARTE:</h4>
               <Input
@@ -393,6 +421,30 @@ export function Skills(): ReactElement {
             </div>
           </SkillItem>
           <SkillItem name="Inteligência">
+            <div>
+              <h4>RELIGIÃO:</h4>
+              <Input
+                type="number"
+                {...register('religion')}
+                defaultValue={skills.intelligence.religion}
+              />
+            </div>
+            <div>
+              <h4>NATUREZA:</h4>
+              <Input
+                type="number"
+                {...register('nature')}
+                defaultValue={skills.intelligence.nature}
+              />
+            </div>
+            <div>
+              <h4>PERCEPÇÃO:</h4>
+              <Input
+                type="number"
+                {...register('perception')}
+                defaultValue={skills.intelligence.perception}
+              />
+            </div>
             <div>
               <h4>ANTROPOLOGIA:</h4>
               <Input
@@ -571,6 +623,14 @@ export function Skills(): ReactElement {
             </div>
           </SkillItem>
           <SkillItem name="Carisma">
+            <div>
+              <h4>INTIMIDAÇÃO:</h4>
+              <Input
+                type="number"
+                {...register('intimidation')}
+                defaultValue={skills.charisma.intimidation}
+              />
+            </div>
             <div>
               <h4>BARGANHA:</h4>
               <Input

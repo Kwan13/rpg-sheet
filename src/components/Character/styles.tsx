@@ -32,9 +32,12 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
+  padding: 10px;
   margin-top: 30px;
   max-width: 500px;
   width: 100%;
+  border: 2px solid var(--purple-400);
+  border-radius: 8px;
 `;
 
 export const InputGroup = styled.div`
@@ -68,6 +71,8 @@ export const FormGroup = styled.div`
 
 export const ProfileActionGroup = styled.div`
   width: 100%;
+  margin-bottom: 20px;
+
   display: flex;
 
   div {

@@ -25,6 +25,9 @@ type ProfileData = {
     life: string;
     sanity: string;
     occultism: string;
+    maxLife: string;
+    maxSanity: string;
+    maxOccultism: string;
   };
   attributes: {
     appearance: string;
@@ -68,6 +71,9 @@ export function SaveProfileProvider({
         life: localStorage.getItem('rpgSheet:Character[life]'),
         sanity: localStorage.getItem('rpgSheet:Character[sanity]'),
         occultism: localStorage.getItem('rpgSheet:Character[occultism]'),
+        maxLife: localStorage.getItem('rpgSheet:Character[maxLife]'),
+        maxSanity: localStorage.getItem('rpgSheet:Character[maxSanity]'),
+        maxOccultism: localStorage.getItem('rpgSheet:Character[maxOccultism]'),
       },
       attributes: {
         appearance: localStorage.getItem('rpgSheet:Attribute[appearance]'),
@@ -120,6 +126,12 @@ export function SaveProfileProvider({
     localStorage.setItem('rpgSheet:Character[life]', status.life);
     localStorage.setItem('rpgSheet:Character[sanity]', status.sanity);
     localStorage.setItem('rpgSheet:Character[occultism]', status.occultism);
+    localStorage.setItem('rpgSheet:Character[maxLife]', status.maxLife);
+    localStorage.setItem('rpgSheet:Character[maxSanity]', status.maxSanity);
+    localStorage.setItem(
+      'rpgSheet:Character[maxOccultism]',
+      status.maxOccultism,
+    );
     localStorage.setItem(
       'rpgSheet:Attribute[appearance]',
       attributes.appearance,

@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+import { Link } from 'react-router-dom';
 
 import { useCharacter } from '../../../hooks/useCharacter';
 
@@ -32,6 +33,7 @@ export function CharacterProfile(): ReactElement {
             </li>
           </ul>
         </div>
+        <Link to="/character/new">alterar dados</Link>
       </ProfileData>
       <ProfileDescription>
         <img src={character.fullBody} alt="zelda" />

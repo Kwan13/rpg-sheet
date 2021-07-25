@@ -46,7 +46,7 @@ export default function Character(): ReactElement {
     resolver: yupResolver(schema),
   });
   const history = useHistory();
-  const { handleSetCharacter } = useCharacter();
+  const { handleSetCharacter, character } = useCharacter();
 
   function onSubmit(data: FormData) {
     handleSetCharacter(data);
@@ -65,11 +65,13 @@ export default function Character(): ReactElement {
               label="Avatar"
               {...register('avatar')}
               error={errors.avatar?.message}
+              defaultValue={character.avatar}
             />
             <Input
               label="Corpo"
               {...register('fullBody')}
               error={errors.fullBody?.message}
+              defaultValue={character.fullBody}
             />
           </InputGroup>
 
@@ -78,29 +80,33 @@ export default function Character(): ReactElement {
             label="Nome"
             {...register('name')}
             error={errors.name?.message}
+            defaultValue={character.name}
           />
           <br />
           <Input
             label="Jogador"
             {...register('player')}
             error={errors.player?.message}
+            defaultValue={character.player}
           />
           <br />
           <Input
             label="Ocupação"
             {...register('occupation')}
             error={errors.occupation?.message}
+            defaultValue={character.occupation}
           />
           <br />
           <Input
             label="Idade"
             {...register('age')}
             error={errors.age?.message}
+            defaultValue={character.age}
           />
           <br />
           <div className="selectBox">
             <label htmlFor="sex">Sexo:</label>
-            <select id="sex" {...register('sex')}>
+            <select id="sex" {...register('sex')} defaultValue={character.sex}>
               <option value="masculino" selected>
                 Masculino
               </option>
@@ -112,12 +118,14 @@ export default function Character(): ReactElement {
             label="Local de nascimento"
             {...register('birthplace')}
             error={errors.birthplace?.message}
+            defaultValue={character.birthplace}
           />
           <br />
           <Input
             label="Local de residência"
             {...register('residence')}
             error={errors.residence?.message}
+            defaultValue={character.residence}
           />
           <br />
 
@@ -126,6 +134,7 @@ export default function Character(): ReactElement {
             placeholder="sobre o personagem"
             {...register('description')}
             error={errors.description?.message}
+            defaultValue={character.description}
           />
           <button type="submit">criar !</button>
         </form>

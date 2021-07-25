@@ -15,7 +15,7 @@ export function Navbar(): ReactElement {
   return (
     <Container>
       <header>
-        <Link to="/">
+        <Link to="/sheet">
           <img src={diceImg} alt="logo" />
         </Link>
 

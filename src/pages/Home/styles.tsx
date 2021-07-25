@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import backgroundImg from '../../assets/bg22.jpg';
+import backgroundImg from '../../assets/bg.jpg';
 
 export const Container = styled.div`
   display: flex;

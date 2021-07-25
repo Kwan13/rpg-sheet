@@ -1,4 +1,4 @@
-import { ReactElement, useState } from 'react';
+import { ReactElement, useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiUserPlus } from 'react-icons/fi';
 import { FaFileImport } from 'react-icons/fa';
@@ -43,6 +43,14 @@ export default function Home(): ReactElement {
   function handleToggleModal() {
     setOpenModal(!openModal);
   }
+
+  useEffect(() => {
+    const characterData = localStorage.getItem('rpgSheet:Character');
+
+    if (characterData) {
+      history.push('/sheet');
+    }
+  }, [history]);
 
   return (
     <Container>

@@ -65,4 +65,19 @@ export const ProfileData = styled.div`
       }
     }
   }
+
+  a {
+    width: 200px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--white);
+    background: var(--purple-400);
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 10px;
+    margin-top: 30px;
+
+    display: block;
+  }
 `;

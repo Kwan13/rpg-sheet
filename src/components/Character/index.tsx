@@ -38,6 +38,7 @@ export function Character(): ReactElement {
     handleSetMaxOccultism,
   } = useStatusBar();
   const {
+    character,
     body,
     extraDamage,
     paranormal,
@@ -78,7 +79,7 @@ export function Character(): ReactElement {
         </div>
       </ProfileActionGroup>
       <header>
-        <img src={avatarImg} alt="avatar" />
+        <img src={character?.avatar || avatarImg} alt="avatar" />
 
         <button type="button" onClick={handleToggleOpenModal}>
           <img src={diceImg} alt="dice" />

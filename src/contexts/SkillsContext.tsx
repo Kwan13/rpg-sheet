@@ -27,6 +27,8 @@ type Skills = {
     locate: number;
     occultism: number;
     craft: number;
+    intuition: number;
+    survival: number;
   };
   dexterity: {
     dodge: number;
@@ -60,6 +62,9 @@ type Skills = {
     trackBack: number;
     electricalRepair: number;
     mechanicalRepair: number;
+    nature: number;
+    perception: number;
+    religion: number;
   };
   charisma: {
     bargain: number;
@@ -69,6 +74,7 @@ type Skills = {
     persuade: number;
     charm: number;
     trick: number;
+    intimidation: number;
   };
 };
 
@@ -117,6 +123,8 @@ export function SkillsProvider({
           locate: 0,
           occultism: 0,
           craft: 0,
+          intuition: 0,
+          survival: 0,
         },
         dexterity: {
           dodge: 0,
@@ -150,6 +158,9 @@ export function SkillsProvider({
           trackBack: 0,
           electricalRepair: 0,
           mechanicalRepair: 0,
+          nature: 0,
+          perception: 0,
+          religion: 0,
         },
         charisma: {
           bargain: 0,
@@ -159,6 +170,7 @@ export function SkillsProvider({
           persuade: 0,
           charm: 0,
           trick: 0,
+          intimidation: 0,
         },
       };
 
