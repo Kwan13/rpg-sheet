@@ -26,7 +26,6 @@ export default function Home(): ReactElement {
   const {
     handleSubmit,
     register,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -36,8 +35,7 @@ export default function Home(): ReactElement {
 
   function onSubmit(data: FormData) {
     handleImportProfile(data);
-    reset();
-    history.push('/sheet');
+    window.location.reload();
   }
 
   function handleToggleModal() {

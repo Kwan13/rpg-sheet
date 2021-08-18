@@ -11,8 +11,23 @@ type Item = {
   description: string;
 };
 
+type EditedItem = {
+  itemUrl: string;
+  name: string;
+  description: string;
+};
+
 type MagicItem = {
   id: string;
+  itemUrl: string;
+  name: string;
+  damage: number;
+  range: number;
+  magicEffect: string;
+  description: string;
+};
+
+type EditedMagicItem = {
   itemUrl: string;
   name: string;
   damage: number;
@@ -27,6 +42,8 @@ type InventoryContextData = {
   handleSetItems(data: Item): void;
   handleSetMagicItems(data: MagicItem): void;
   handleDeleteItems(id: string): void;
+  handleEditItems(id: string, data: EditedItem): void;
+  handleEditMagicItems(id: string, data: EditedMagicItem): void;
   handleDeleteMagicItems(id: string): void;
 };
 
@@ -66,6 +83,48 @@ export function InventoryProvider({
     );
   }
 
+  function handleEditItems(id: string, data: EditedItem) {
+    const editedItems = items.map(item => {
+      if (item.id === id) {
+        return {
+          id: item.id,
+          ...data,
+        };
+      }
+      return {
+        ...item,
+      };
+    });
+
+    setItems(editedItems);
+
+    localStorage.setItem(
+      'rpgSheet:Inventory[items]',
+      JSON.stringify(editedItems),
+    );
+  }
+
+  function handleEditMagicItems(id: string, data: EditedMagicItem) {
+    const editedMagicItems = magicItems.map(item => {
+      if (item.id === id) {
+        return {
+          id: item.id,
+          ...data,
+        };
+      }
+      return {
+        ...item,
+      };
+    });
+
+    setMagicItems(editedMagicItems);
+
+    localStorage.setItem(
+      'rpgSheet:Inventory[magicItems]',
+      JSON.stringify(editedMagicItems),
+    );
+  }
+
   function handleDeleteItems(id: string) {
     const filteredItem = items.filter(item => item.id !== id);
     setItems(filteredItem);
@@ -96,9 +155,11 @@ export function InventoryProvider({
     <InventoryContext.Provider
       value={{
         handleSetItems,
+        handleEditItems,
         handleSetMagicItems,
         handleDeleteItems,
         handleDeleteMagicItems,
+        handleEditMagicItems,
         items,
         magicItems,
       }}

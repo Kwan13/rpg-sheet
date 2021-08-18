@@ -35,14 +35,8 @@ export function InventoryItems(): ReactElement {
   const [openNormalItemModal, setOpenNormalItemModal] = useState(false);
   const [openMagicItemModal, setOpenMagicItemModal] = useState(false);
 
-  const {
-    handleSetItems,
-    handleSetMagicItems,
-    handleDeleteMagicItems,
-    handleDeleteItems,
-    items,
-    magicItems,
-  } = useInventory();
+  const { handleSetItems, handleSetMagicItems, items, magicItems } =
+    useInventory();
 
   const { handleSubmit, register, reset } = useForm();
 
@@ -104,21 +98,13 @@ export function InventoryItems(): ReactElement {
       {toggleItens ? (
         <ItemsGrid handleAddItem={handleToggleNormalItemModal}>
           {items.map(item => (
-            <NormalItem
-              key={item.id}
-              data={item}
-              handleDeleteItem={() => handleDeleteItems(item.id)}
-            />
+            <NormalItem key={item.id} data={item} />
           ))}
         </ItemsGrid>
       ) : (
         <ItemsGrid handleAddItem={handleToggleMagicItemModal}>
           {magicItems.map(item => (
-            <MagicItem
-              key={item.id}
-              data={item}
-              handleDeleteItem={() => handleDeleteMagicItems(item.id)}
-            />
+            <MagicItem key={item.id} data={item} />
           ))}
         </ItemsGrid>
       )}

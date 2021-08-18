@@ -88,6 +88,10 @@ export const ProfileActionGroup = styled.div`
       border: 0;
       color: var(--white);
 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       & + button {
         margin-left: 8px;
       }
