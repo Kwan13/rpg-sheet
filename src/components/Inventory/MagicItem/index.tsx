@@ -92,10 +92,7 @@ export function MagicItem({ data }: MagicItemProps): ReactElement {
         </main>
       </Container>
       {editItemModal && (
-        <Modal
-          modalTitle="Adicionar item mágico"
-          closeModal={handleToggleModal}
-        >
+        <Modal modalTitle="Editar item mágico" closeModal={handleToggleModal}>
           <form onSubmit={handleSubmit(handleSubmitMagicItem)}>
             <Input
               {...register('itemUrl')}
